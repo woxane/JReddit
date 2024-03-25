@@ -21,6 +21,17 @@ public class Reddit {
         return usernames;
     }
 
+
+    public ArrayList<String> getAllEmails() {
+        ArrayList<String> emailAddress = new ArrayList<>();
+
+        for (Account account : accounts) {
+            emailAddress.add(account.emailAddress);
+        }
+
+        return emailAddress;
+    }
+
     public void signUp() {
         String name;
         String username;
@@ -64,4 +75,6 @@ public class Reddit {
         Account account = new Account(name , username , password , emailAddress);
         accounts.add(account);
     }
+
+
 }
