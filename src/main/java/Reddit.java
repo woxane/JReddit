@@ -1,4 +1,7 @@
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Reddit {
@@ -22,7 +25,7 @@ public class Reddit {
     }
 
 
-    public ArrayList<String> getAllEmails() {
+    public static ArrayList<String> getAllEmails() {
         ArrayList<String> emailAddress = new ArrayList<>();
 
         for (Account account : accounts) {
@@ -77,4 +80,67 @@ public class Reddit {
     }
 
 
+    public static boolean authenticate() {
+        String password;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("You want to log in with username or email address ? \n\t1) Username \t2) Email\n: ");
+
+        do {
+            int loginMethod = scanner.nextInt();
+
+            if (loginMethod == 1 | loginMethod == 2) {
+                switch (loginMethod) {
+                    case 1 :
+                        System.out.print("So please enter your username : ");
+                        String username = scanner.nextLine();
+
+                        System.out.print("Now enter your password : ");
+                        password = scanner.nextLine();
+
+                        for (Account account : accounts) {
+                            if (Objects.equals(account.username , username)) {
+                                if (Objects.equals(account.password , DigestUtils.sha256Hex(password))) {
+                                    return true;
+                                }
+                            }
+                        }
+
+                        return false;
+
+                    case 2 :
+                        System.out.print("So please enter your email address : ");
+                        String emailAddress;
+
+                        do {
+                            emailAddress = scanner.nextLine();
+
+                            if (emailValidator(emailAddress)) {
+                                break;
+                            } else {
+                                System.out.print("Sorry but the entered email address is not valid . \nTry again : ");
+                            }
+
+                        } while (true);
+
+                        System.out.print("Now enter your password : ");
+                        password = scanner.nextLine();
+
+                        for (Account account : accounts) {
+                            if (Objects.equals(account.emailAddress , emailAddress)) {
+                                if (Objects.equals(account.password , DigestUtils.sha256Hex(password))) {
+                                    return true;
+                                }
+                            }
+                        }
+
+                        return false;
+                }
+
+            } else {
+                System.out.print("Please choose between 1 or 2 : ");
+            }
+
+        } while (true);
+    }
 }
