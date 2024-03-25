@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -8,6 +9,8 @@ public class Account {
     String emailAddress;
     final UUID accountID;
     int karma;
+    ArrayList<Subreddit> joinedSubreddits = new ArrayList<>();
+    ArrayList<Comment> comments = new ArrayList<>();
 
     Account (String name , String username , String password , String emailAddress) {
         this.name = name;
