@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class subreddit {
+public class Subreddit {
     Account owner;
     ArrayList<Account> admins = new ArrayList<>();
     ArrayList<Account> banedUsers = new ArrayList<>();
