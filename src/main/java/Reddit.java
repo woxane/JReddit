@@ -5,7 +5,8 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Reddit {
-    static ArrayList<Subreddit> Subreddits = new ArrayList<>();
+    static ArrayList<Subreddit> subreddits = new ArrayList<>();
+    static ArrayList<Post> posts = new ArrayList<>();
     static ArrayList<Account> accounts = new ArrayList<>();
 
     public static boolean emailValidator(String email) {
