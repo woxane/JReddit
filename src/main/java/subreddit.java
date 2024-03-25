@@ -7,7 +7,7 @@ public class Subreddit {
     ArrayList<Account> users = new ArrayList<>();
     ArrayList<Post> posts = new ArrayList<>();
 
-    subreddit (Account owner) {
+    Subreddit (Account owner) {
         this.owner = owner;
     }
 }
