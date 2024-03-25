@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Post {
-    final String postAuthor;
-    final String postContent;
+    final String Author;
+    final String Content;
     int vote;
     ArrayList<Comment> comments = new ArrayList<>();
 
     Post (String username , String content) {
-        this.postAuthor = username;
-        this.postContent = content;
+        this.Author = username;
+        this.Content = content;
         this.vote = 0;
     }
 }

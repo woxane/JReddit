@@ -1,12 +1,12 @@
 public class Comment {
-    final String commentAuthor;
-    final String commentContent;
+    final String Author;
+    final String Content;
     int vote;
 
 
     Comment (String username , String content) {
-        this.commentAuthor = username;
-        this.commentContent = content;
+        this.Author = username;
+        this.Content = content;
         this.vote = 0;
     }
 }
