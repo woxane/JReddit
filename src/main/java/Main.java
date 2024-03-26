@@ -1,8 +1,14 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Reddit reddit = new Reddit();
+
+
+
     }
 
     public static Account authPage() {
@@ -50,10 +56,24 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String option;
         Post post;
-
         int postNumber = 0;
-        while (postNumber < account.posts.size()){
-            post = account.posts.get(postNumber);
+        ArrayList<Post> posts = new ArrayList<>();
+
+        for (Post redditPost : Reddit.posts) {
+            for (Subreddit subreddit : account.joinedSubreddits) {
+                for (Post accountPost : subreddit.posts) {
+                    if (Objects.equals(redditPost , accountPost)) {
+                        posts.add(redditPost);
+                    }
+                }
+            }
+
+        }
+
+
+
+        while (postNumber < posts.size()){
+            post = posts.get(postNumber);
 
             System.out.println("r/" + post.subreddit.name + " via u/" + post.author.username);
             System.out.println(post.title);
