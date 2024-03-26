@@ -29,6 +29,21 @@ public class Account {
         System.out.println("Email = " + this.emailAddress);
         System.out.println("Karma = " + this.karma);
         System.out.println("Number of joined subreddits = " + this.joinedSubreddits.size());
+
+        System.out.println("Karmas : ");
+        System.out.println("\tPosts : ");
+
+        for (Post post : posts) {
+            System.out.println("\t\t" + post.title);
+            System.out.println("\t\t\t" + post.vote + "^");
+        }
+
+        System.out.println("\tComments : ");
+
+        for (Comment comment : comments) {
+            System.out.println("\t\t" + comment.content);
+            System.out.println("\t\t\t" + comment.vote + "^");
+        }
     }
 
     public void viewSubreddits() {
