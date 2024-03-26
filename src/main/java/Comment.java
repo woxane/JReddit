@@ -1,14 +1,21 @@
 public class Comment {
-    final Account Author;
+    final Account author;
     final Post post;
-    final String Content;
+    final String content;
     int vote;
 
 
     Comment (Account account , String content , Post post) {
-        this.Author = account;
-        this.Content = content;
+        this.author = account;
+        this.content = content;
         this.post = post;
         this.vote = 0;
+    }
+
+
+    public void viewComment() {
+        System.out.println("\tu/" + author.username);
+        System.out.println("\t\t" + this.content);
+        System.out.println("\t" + this.vote + "^");
     }
 }
