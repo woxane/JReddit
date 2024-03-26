@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Reddit reddit = new Reddit();
-
-
 
     }
 
@@ -52,7 +49,7 @@ public class Main {
     }
 
 
-    public Post timelinePage(Account account) {
+    public static Post timelinePage(Account account) {
         Scanner scanner = new Scanner(System.in);
         String option;
         Post post;
