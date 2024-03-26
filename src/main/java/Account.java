@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -43,5 +44,21 @@ public class Account {
                 post.viewPost();
             }
         }
+    }
+
+
+    public void createPost(Subreddit subreddit) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("What title you want to set for your post : ");
+        String title = scanner.nextLine();
+
+        System.out.println("Please enter the body text for your post : ");
+        String content = scanner.nextLine();
+
+        Post post = new Post(this , title , content , subreddit);
+
+        subreddit.posts.add(post);
+        Reddit.posts.add(post);
     }
 }
