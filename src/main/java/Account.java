@@ -12,6 +12,7 @@ public class Account {
     int karma;
     ArrayList<Subreddit> joinedSubreddits = new ArrayList<>();
     ArrayList<Comment> comments = new ArrayList<>();
+    ArrayList<Post> posts = new ArrayList<>();
 
     Account (String name , String username , String password , String emailAddress) {
         this.name = name;
@@ -58,6 +59,7 @@ public class Account {
 
         subreddit.posts.add(post);
         Reddit.posts.add(post);
+        this.posts.add(post);
     }
 
 
