@@ -8,8 +8,8 @@ public class Post {
     int vote;
     ArrayList<Comment> comments = new ArrayList<>();
 
-    Post (Account username , String title, String content , Subreddit subreddit) {
-        this.author = username;
+    Post (Account account , String title, String content , Subreddit subreddit) {
+        this.author = account;
         this.title = title;
         this.content = content;
         this.subreddit = subreddit;
