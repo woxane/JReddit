@@ -36,7 +36,7 @@ public class Reddit {
         return emailAddress;
     }
 
-    public void signUp() {
+    public static Account signUp() {
         String name;
         String username;
         String password;
@@ -82,17 +82,20 @@ public class Reddit {
 
         Account account = new Account(name , username , password , emailAddress);
         accounts.add(account);
+
+        return account;
     }
 
 
-    public static boolean authenticate() {
+    public static Account authenticate() {
         String password;
+        int loginMethod;
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("You want to log in with username or email address ? \n\t1) Username \t2) Email\n: ");
 
         do {
-            int loginMethod = scanner.nextInt();
+            loginMethod = scanner.nextInt();
 
             if (loginMethod == 1 | loginMethod == 2) {
                 switch (loginMethod) {
@@ -106,12 +109,12 @@ public class Reddit {
                         for (Account account : accounts) {
                             if (Objects.equals(account.username , username)) {
                                 if (Objects.equals(account.password , DigestUtils.sha256Hex(password))) {
-                                    return true;
+                                    return account;
                                 }
                             }
                         }
 
-                        return false;
+                        return null;
 
                     case 2 :
                         System.out.print("So please enter your email address : ");
@@ -134,12 +137,12 @@ public class Reddit {
                         for (Account account : accounts) {
                             if (Objects.equals(account.emailAddress , emailAddress)) {
                                 if (Objects.equals(account.password , DigestUtils.sha256Hex(password))) {
-                                    return true;
+                                    return account;
                                 }
                             }
                         }
 
-                        return false;
+                        return null;
                 }
 
             } else {
