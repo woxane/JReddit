@@ -54,12 +54,6 @@ public class Account {
         }
     }
 
-    public void viewTimeline() {
-        for (Subreddit subreddit : joinedSubreddits) {
-            subreddit.viewSubreddit();
-        }
-    }
-
 
     public void createPost(Subreddit subreddit) {
         Scanner scanner = new Scanner(System.in);
