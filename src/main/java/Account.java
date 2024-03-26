@@ -36,4 +36,12 @@ public class Account {
             System.out.println("\tNumber of posts = " + subreddit.posts.size());
         }
     }
+
+    public void viewTimeline() {
+        for (Subreddit subreddit : joinedSubreddits) {
+            for (Post post : subreddit.posts) {
+                post.viewPost();
+            }
+        }
+    }
 }
