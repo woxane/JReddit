@@ -85,4 +85,42 @@ public class Main {
         return null;
     }
 
+
+
+    public Comment commentPage(Post post) {
+        Scanner scanner = new Scanner(System.in);
+        String option;
+        Comment comment;
+
+        int commentNumber = 0;
+        while (commentNumber < post.comments.size()){
+            comment = post.comments.get(commentNumber);
+
+            comment.viewComment();
+
+            System.out.println("Enter to select , q to quite , w to go up , s to get down : ");
+            option = scanner.nextLine();
+
+            if (Objects.equals(option, "")) {
+                return comment;
+
+            } else if (Objects.equals(option, "w")) {
+                if (commentNumber!= 0) {
+                    commentNumber--;
+                }
+                continue;
+
+            } else if (Objects.equals(option , "s")) {
+                commentNumber++;
+                continue;
+
+            } else {
+                return null;
+            }
+        }
+
+        System.out.println("There is no comment anymore </3 .");
+        return null;
+    }
+
 }
