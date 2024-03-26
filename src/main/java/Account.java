@@ -61,4 +61,16 @@ public class Account {
         subreddit.posts.add(post);
         Reddit.posts.add(post);
     }
+
+
+    public void createSubreddit() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("What name is good for this subreddit : r/");
+        String name = scanner.nextLine();
+
+        Subreddit subreddit = new Subreddit(this , name);
+
+        Reddit.subreddits.add(subreddit);
+    }
 }
