@@ -20,6 +20,7 @@ public class Post {
         System.out.println("r/" + this.subreddit.name + " via u/" + this.author.username);
         System.out.println(this.title);
         System.out.println("\n" + this.content);
+        System.out.println(this.vote + "^");
 
         for (Comment comment : comments) {
             comment.viewComment();
