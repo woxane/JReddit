@@ -12,4 +12,11 @@ public class Subreddit {
         this.owner = owner;
         this.name = name;
     }
+
+    public void viewSubreddit() {
+        System.out.println("u/" + this.name);
+        for (Post post : posts) {
+            post.viewPost();
+        }
+    }
 }
