@@ -28,4 +28,12 @@ public class Account {
         System.out.println("Karma = " + this.karma);
         System.out.println("Number of joined subreddits = " + this.joinedSubreddits.size());
     }
+
+    public void viewSubreddits() {
+        for (Subreddit subreddit : joinedSubreddits) {
+            System.out.println("r/" + subreddit.name + ":");
+            System.out.println("\tNumber of users = " + subreddit.users.size());
+            System.out.println("\tNumber of posts = " + subreddit.posts.size());
+        }
+    }
 }
