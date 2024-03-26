@@ -1,15 +1,17 @@
 import java.util.ArrayList;
 
 public class Post {
-    final String Author;
-    final String Content;
+    final Account author;
+    final String title;
+    final String content;
     final Subreddit subreddit;
     int vote;
     ArrayList<Comment> comments = new ArrayList<>();
 
-    Post (String username , String content , Subreddit subreddit) {
-        this.Author = username;
-        this.Content = content;
+    Post (Account username , String title , String content , Subreddit subreddit) {
+        this.author = username;
+        this.title = title;
+        this.content = content;
         this.subreddit = subreddit;
         this.vote = 0;
     }
