@@ -15,6 +15,7 @@ public class Subreddit {
 
     public void viewSubreddit() {
         System.out.println("u/" + this.name);
+        System.out.println("Number of users = " + this.users.size());
         for (Post post : posts) {
             post.viewPost();
         }
