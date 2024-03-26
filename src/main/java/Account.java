@@ -40,9 +40,7 @@ public class Account {
 
     public void viewTimeline() {
         for (Subreddit subreddit : joinedSubreddits) {
-            for (Post post : subreddit.posts) {
-                post.viewPost();
-            }
+            subreddit.viewSubreddit();
         }
     }
 
