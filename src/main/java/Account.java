@@ -19,4 +19,13 @@ public class Account {
         this.emailAddress = emailAddress;
         this.accountID = UUID.randomUUID();
     }
+
+
+    public void viewProfile() {
+        System.out.println("Name = " + this.name) ;
+        System.out.println("Username = " + this.username);
+        System.out.println("Email = " + this.emailAddress);
+        System.out.println("Karma = " + this.karma);
+        System.out.println("Number of joined subreddits = " + this.joinedSubreddits.size());
+    }
 }
