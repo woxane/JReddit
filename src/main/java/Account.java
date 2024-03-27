@@ -137,4 +137,19 @@ public class Account {
             }
         }
     }
+
+
+    public void updateKarma() {
+        for (Post post : this.posts) {
+            for (Vote vote : post.votes) {
+                this.karma += (vote.isUpVote ? 1 : 0);
+            }
+        }
+
+        for (Comment comment : this.comments) {
+            for (Vote vote : comment.votes) {
+                this.karma += (vote.isUpVote ? 1 : 0);
+            }
+        }
+    }
 }
