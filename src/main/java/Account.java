@@ -101,4 +101,22 @@ public class Account {
 
         return true;
     }
+
+
+    public boolean vote(Comment comment , boolean isUpVote) {
+        ArrayList<Account> accounts = new ArrayList<>();
+
+        for (Vote vote : comment.votes) {
+            accounts.add(vote.voter);
+        }
+
+        if (accounts.contains(this)) {
+            return false;
+        }
+
+        Vote vote = new Vote(this , isUpVote);
+        comment.votes.add(vote);
+
+        return true;
+    }
 }
