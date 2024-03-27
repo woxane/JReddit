@@ -5,7 +5,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Reddit reddit = new Reddit();
+        Account account;
 
+        do {
+            account = authPage();
+            if (account == null) {
+                continue;
+            } else {
+                break;
+            }
+        } while (true);
     }
 
     public static Account authPage() {
