@@ -29,35 +29,7 @@ public class Main {
 
             switch (option) {
                 case 1 :
-                    Post post = timelinePage(account);
-
-                    if (post == null) {
-                        break;
-                    }
-
-                    post.viewPost();
-
-                    System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Quite ");
-                    int exploreOption = scanner.nextInt();
-
-                    switch (exploreOption) {
-                        case 1 :
-                            Reddit.postScroller(post.subreddit.posts);
-                            break;
-
-                        case 2 :
-                            post.author.viewProfile();
-                            break;
-
-                        case 3 :
-                            break;
-
-                        default :
-                            break;
-                    }
-
-
-
+                    timelinePage(account);
                     break;
 
                 case 2 :

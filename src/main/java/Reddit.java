@@ -194,6 +194,7 @@ public class Reddit {
            return;
 
        } else {
+           post.viewPost();
            System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Quite ");
            int exploreOption = scanner.nextInt();
 
