@@ -1,12 +1,17 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Reddit reddit = new Reddit();
+    Reddit reddit;
+     Main() {
+         reddit = new Reddit();
+     }
+
+    public static void main() {
         Account account;
+        int option;
+        boolean logOut = false;
 
         do {
             account = authPage();
@@ -16,6 +21,32 @@ public class Main {
                 break;
             }
         } while (true);
+
+
+        while (!logOut) {
+            option = menuPage();
+
+            switch (option) {
+                case 1 :
+                    Post post = timelinePage(account);
+                    post.viewPost();
+                    break;
+
+                case 2 :
+                    break;
+
+                case 3 :
+                    break;
+
+                case 4 :
+                    logOut = true;
+                    break;
+            }
+        }
+
+        main();
+
+
     }
 
     public static Account authPage() {
