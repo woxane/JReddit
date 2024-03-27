@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -81,5 +82,23 @@ public class Account {
         Subreddit subreddit = new Subreddit(this , name);
 
         Reddit.subreddits.add(subreddit);
+    }
+
+
+    public boolean vote(Post post , boolean isUpVote) {
+        ArrayList<Account> accounts = new ArrayList<>();
+
+        for (Vote vote : post.votes) {
+            accounts.add(vote.voter);
+        }
+
+        if (accounts.contains(this)) {
+            return false;
+        }
+
+        Vote vote = new Vote(this , isUpVote);
+        post.votes.add(vote);
+
+        return true;
     }
 }
