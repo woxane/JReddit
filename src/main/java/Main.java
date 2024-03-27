@@ -91,10 +91,6 @@ public class Main {
 
 
     public static Post timelinePage(Account account) {
-        Scanner scanner = new Scanner(System.in);
-        String option;
-        Post post;
-        int postNumber = 0;
         ArrayList<Post> posts = new ArrayList<>();
 
         for (Post redditPost : Reddit.posts) {
@@ -105,42 +101,9 @@ public class Main {
                     }
                 }
             }
-
         }
 
-
-
-        while (postNumber < posts.size()){
-            post = posts.get(postNumber);
-
-            System.out.println("r/" + post.subreddit.name + " via u/" + post.author.username);
-            System.out.println(post.title);
-            System.out.println("\t" + post.content);
-            System.out.println("\t\t" + post.vote + "^");
-
-            System.out.println("Enter to show more , q to quite , w to go up , s to get down : ");
-            option = scanner.nextLine();
-
-            if (Objects.equals(option, "")) {
-                return post;
-
-            } else if (Objects.equals(option, "w")) {
-                if (postNumber != 0) {
-                    postNumber--;
-                }
-                continue;
-
-            } else if (Objects.equals(option , "s")) {
-                postNumber++;
-                continue;
-
-            } else {
-                return null;
-            }
-        }
-
-        System.out.println("There is no post anymore </3 .");
-        return null;
+        return Reddit.postScroller(posts);
     }
 
 
