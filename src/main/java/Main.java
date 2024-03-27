@@ -8,7 +8,7 @@ public class Main {
          reddit = new Reddit();
      }
 
-    public static void main() {
+    public static void main(String[] args) {
         Account account;
         int option;
         boolean logOut = false;
@@ -44,7 +44,7 @@ public class Main {
             }
         }
 
-        main();
+        main(new String[0]);
 
 
     }
