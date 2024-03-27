@@ -156,7 +156,7 @@ public class Main {
         int option;
 
         System.out.println("where you want to go ? : ");
-        System.out.print("1) Timeline\t2)Create subreddit\n3) Search\t4) IDK\n: ");
+        System.out.print("1) Timeline\t2)Create subreddit\n3) Search\t4) Log out\n: ");
 
         do {
             option = scanner.nextInt();
