@@ -150,4 +150,25 @@ public class Main {
         return null;
     }
 
+
+    public static int menuPage() {
+        Scanner scanner = new Scanner(System.in);
+        int option;
+
+        System.out.println("where you want to go ? : ");
+        System.out.print("1) Timeline\t2)Create subreddit\n3) Search\t4) IDK\n: ");
+
+        do {
+            option = scanner.nextInt();
+
+            if (option > 0 & option < 5) {
+                break;
+            } else {
+                System.out.print("Please choose between 1 , 4 : ");
+            }
+        } while (true);
+
+        return option;
+    }
+
 }
