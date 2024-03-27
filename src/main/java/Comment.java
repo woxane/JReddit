@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 public class Comment {
     final Account author;
     final Post post;
     final String content;
     int vote;
-
+    ArrayList<Vote> votes = new ArrayList<>();
 
     Comment (Account account , String content , Post post) {
         this.author = account;

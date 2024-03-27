@@ -7,6 +7,7 @@ public class Post {
     final Subreddit subreddit;
     int vote;
     ArrayList<Comment> comments = new ArrayList<>();
+    ArrayList<Vote> votes = new ArrayList<>();
 
     Post (Account account , String title, String content , Subreddit subreddit) {
         this.author = account;
