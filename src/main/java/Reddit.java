@@ -151,4 +151,45 @@ public class Reddit {
 
         } while (true);
     }
+
+
+    public static Post postScroller(ArrayList<Post> posts) {
+        Scanner scanner = new Scanner(System.in);
+        Post post;
+        int postNumber = 0;
+        String option;
+
+        while (postNumber < posts.size()) {
+            post = posts.get(postNumber);
+
+            System.out.println("r/" + post.subreddit.name + " via u/" + post.author.username);
+            System.out.println(post.title);
+            System.out.println("\t" + post.content);
+            System.out.println("\t\t" + post.vote + "^");
+
+            System.out.println("Enter to show more , q to quite , w to go up , s to get down : ");
+            option = scanner.nextLine();
+
+            if (Objects.equals(option, "")) {
+                return post;
+
+            } else if (Objects.equals(option, "w")) {
+                if (postNumber != 0) {
+                    postNumber--;
+                }
+                continue;
+
+            } else if (Objects.equals(option , "s")) {
+                postNumber++;
+                continue;
+
+            } else {
+                return null;
+            }
+        }
+
+        System.out.println("There is no post anymore </3 .");
+        return null;
+    }
+
 }
