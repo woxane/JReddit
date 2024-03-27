@@ -119,4 +119,13 @@ public class Account {
 
         return true;
     }
+
+
+    public void retractVote(Post post) {
+        for (Vote vote : post.votes) {
+            if (Objects.equals(vote.voter , this)) {
+                post.votes.remove(vote);
+            }
+        }
+    }
 }
