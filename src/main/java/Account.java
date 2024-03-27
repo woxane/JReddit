@@ -99,6 +99,7 @@ public class Account {
         Vote vote = new Vote(this , isUpVote);
         post.votes.add(vote);
 
+        this.updateKarma();
         return true;
     }
 
@@ -117,6 +118,7 @@ public class Account {
         Vote vote = new Vote(this , isUpVote);
         comment.votes.add(vote);
 
+        this.updateKarma();
         return true;
     }
 
@@ -127,6 +129,7 @@ public class Account {
                 post.votes.remove(vote);
             }
         }
+        this.updateKarma();
     }
 
 
@@ -136,6 +139,7 @@ public class Account {
                 comment.votes.remove(vote);
             }
         }
+        this.updateKarma();
     }
 
 
