@@ -153,9 +153,9 @@ public class Reddit {
     }
 
 
-    public static Post postScroller(ArrayList<Post> posts) {
+    public static void postScroller(ArrayList<Post> posts) {
         Scanner scanner = new Scanner(System.in);
-        Post post;
+        Post post = null;
         int postNumber = 0;
         String option;
 
@@ -171,7 +171,7 @@ public class Reddit {
             option = scanner.nextLine();
 
             if (Objects.equals(option, "")) {
-                return post;
+                break;
 
             } else if (Objects.equals(option, "w")) {
                 if (postNumber != 0) {
@@ -184,12 +184,36 @@ public class Reddit {
                 continue;
 
             } else {
-                return null;
+                post = null;
+                break;
             }
         }
+        
+       if (post == null){
+           System.out.println("There is no post anymore </3 .");
+           return;
 
-        System.out.println("There is no post anymore </3 .");
-        return null;
+       } else {
+           System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Quite ");
+           int exploreOption = scanner.nextInt();
+
+           switch (exploreOption) {
+               case 1 :
+                   postScroller(post.subreddit.posts);
+                   break;
+
+               case 2 :
+                   post.author.viewProfile();
+                   return;
+
+               case 3 :
+                   return;
+
+               default :
+                   return;
+           }
+       }
+        
     }
 
 }
