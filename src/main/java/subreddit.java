@@ -7,7 +7,6 @@ public class Subreddit {
     ArrayList<Account> banedUsers = new ArrayList<>();
     ArrayList<Account> users = new ArrayList<>();
     ArrayList<Post> posts = new ArrayList<>();
-    ArrayList<Vote> votes = new ArrayList<>();
 
     Subreddit (Account owner , String name) {
         this.owner = owner;
