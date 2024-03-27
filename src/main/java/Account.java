@@ -128,4 +128,13 @@ public class Account {
             }
         }
     }
+
+
+    public void retractVote(Comment comment) {
+        for (Vote vote : comment.votes) {
+            if (Objects.equals(vote.voter , this)) {
+                comment.votes.remove(vote);
+            }
+        }
+    }
 }
