@@ -25,6 +25,16 @@ public class Reddit {
         return usernames;
     }
 
+    public static ArrayList<String> getAllSubredditnames() {
+        ArrayList<String> names = new ArrayList<>();
+
+        for (Subreddit subreddit : subreddits) {
+            names.add(subreddit.name);
+        }
+
+        return names;
+    }
+
 
     public static ArrayList<String> getAllEmails() {
         ArrayList<String> emailAddress = new ArrayList<>();
