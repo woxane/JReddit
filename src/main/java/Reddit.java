@@ -317,24 +317,73 @@ public class Reddit {
         boolean isAccount = name.charAt(0) == 'u'; // if its account name or subreddits name
 
         if (isAccount) {
-            if (usernames.contains(objectName)) {
-                Account account = accounts.get(usernames.indexOf(objectName));
-                account.viewProfile();
-                return true;
+            ArrayList<Account> similarAccounts = findSimilarUsernames(objectName);
+
+            if (similarAccounts.isEmpty()) {
+                System.out.println("Sorry we couldn't find any username like this username </3");
+                return false;
 
             } else {
-                return false;
+                int number = 0;
+                int choose;
+                System.out.println("Please choose one of the above accounts : ");
+
+                for (Account account : similarAccounts) {
+                    System.out.println(number + ") u/" + account.username);
+                    number++;
+                }
+
+                System.out.print(": ");
+
+                do {
+                   choose = scanner.nextInt();
+
+                   if (choose > 0 | choose <= similarAccounts.size()) {
+                        break;
+                   } else {
+                       System.out.print("Please choose between one of the above : ");
+                   }
+                } while (true);
+
+                Account account = similarAccounts.get(choose - 1);
+                account.viewProfile();
+                return true;
             }
 
         } else {
-            if (subredditsNames.contains(objectName)) {
+            ArrayList<Subreddit> similarSubreddits = findSimilarSubreddits(objectName);
+
+            if (similarSubreddits.isEmpty()) {
+                System.out.println("Sorry but we couldn't find any subreddit with this name </3");
+                return false;
+
+            } else {
+                int number = 0;
+                int choose;
+                System.out.println("Please choose one of the above subreddits : ");
+
+                for (Subreddit subreddit : similarSubreddits) {
+                    System.out.println(number + ") r/" + subreddit.name);
+                    number++;
+                }
+
+                System.out.print(": ");
+
+                do {
+                    choose = scanner.nextInt();
+
+                    if (choose > 0 | choose <= similarSubreddits.size()){
+                        break;
+
+                    } else {
+                        System.out.print("Please choose between one of the above : ");
+                    }
+                } while (true);
+
                 Subreddit subreddit = subreddits.get(subredditsNames.indexOf(objectName));
 
                 postScroller(subreddit.posts , searcherAccount);
                 return true;
-
-            } else {
-                return false;
             }
         }
     }
