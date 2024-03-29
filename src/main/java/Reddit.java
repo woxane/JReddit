@@ -204,7 +204,7 @@ public class Reddit {
     }
 
 
-    public static void commentScroller(Post post , Account account) {
+    public static Comment commentScroller(Post post , Account account) {
         Scanner scanner = new Scanner(System.in);
         String option;
         Comment comment = null;
@@ -219,7 +219,7 @@ public class Reddit {
             option = scanner.nextLine();
 
             if (Objects.equals(option, "")) {
-                break;
+                return comment;
 
             } else if (Objects.equals(option, "w")) {
                 if (commentNumber!= 0) {
@@ -237,27 +237,8 @@ public class Reddit {
             }
         }
 
-        if (comment == null) {
-            System.out.println("There is no comment anymore </3 .");
-            return;
-
-        } else {
-            boolean choose;
-            System.out.println("Would you want to vote 1) Yes / 2) No ");
-
-            choose = scanner.nextInt() == 1;
-
-            if (choose) {
-                boolean isUpVote;
-                System.out.println("1) Down / 2) Up");
-
-                isUpVote = scanner.nextInt() == 2;
-
-                account.vote(comment , isUpVote);
-                comment.author.updateKarma();
-            }
-            return;
-        }
+        System.out.println("There is no comment anymore </3 .");
+        return null;
     }
 
 
