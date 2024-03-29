@@ -1,5 +1,6 @@
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.lang.reflect.AnnotatedArrayType;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -349,6 +350,19 @@ public class Reddit {
         }
 
         return similarAccounts;
+    }
+
+
+    public static ArrayList<Subreddit> findSimilarSubreddits(String name) {
+        ArrayList<Subreddit> similarSubreddits = new ArrayList<>();
+
+        for (Subreddit subreddit : subreddits) {
+           if (subreddit.name.contains(name) | name.contains(subreddit.name)) {
+               similarSubreddits.add(subreddit);
+           }
+        }
+
+        return similarSubreddits;
     }
 
 }
