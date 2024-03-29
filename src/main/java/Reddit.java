@@ -338,4 +338,17 @@ public class Reddit {
         }
     }
 
+
+    public static ArrayList<Account> findSimilarUsernames(String name) {
+        ArrayList<Account> similarAccounts = new ArrayList<>();
+
+        for (Account account : accounts) {
+            if (account.username.contains(name) | name.contains(account.username)) {
+                similarAccounts.add(account);
+            }
+        }
+
+        return similarAccounts;
+    }
+
 }
