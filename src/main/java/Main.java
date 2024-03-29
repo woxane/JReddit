@@ -154,7 +154,18 @@ public class Main {
             }
         }
 
-        Reddit.postScroller(posts , account);
+        if (posts.isEmpty()) {
+            System.out.println("This subreddit has no post </3");
+            return;
+        }
+
+        Post post = Reddit.postScroller(posts , account);
+
+        if (post != null) {
+            post.viewPost();
+            post.explorePost(account);
+        }
+
     }
 
 
