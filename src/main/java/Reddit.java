@@ -199,9 +199,8 @@ public class Reddit {
             }
         }
 
-       System.out.println("There is no post anymore </3 .");
-
-       return null;
+        System.out.println("There is no post anymore </3 .");
+        return null;
     }
 
 
