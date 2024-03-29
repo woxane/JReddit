@@ -1,5 +1,6 @@
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.crypto.SealedObject;
 import java.lang.reflect.AnnotatedArrayType;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -323,7 +324,49 @@ public class Reddit {
                 System.out.println("Number of users : " + subreddit.users.size());
 
                 if (subreddit.posts.size() != 0) {
-                    postScroller(subreddit.posts , searcherAccount);
+                    Post post = postScroller(subreddit.posts , searcherAccount);
+
+                    if (post != null) {
+                        if (subreddit.admins.contains(searcherAccount)) {
+                            int option;
+                            System.out.print("Choose : \n1) Delete this post \n2) Ban the author and delete all the post of his");
+
+                            do {
+                                option = scanner.nextInt();
+
+                                if (option == 1 | option == 2) {
+                                    break;
+
+                                } else {
+                                    System.out.print("Please choose one of the above : ");
+                                }
+                            } while (true);
+
+                            switch (option) {
+                                case 1 :
+                                    subreddit.posts.remove(post);
+
+                                case 2 :
+                                    subreddit.banedUsers.add(post.author);
+                                    int numberOfPosts = 0;
+
+                                    for (Post subredditPost : subreddit.posts) {
+                                        if (Objects.equals(subredditPost.author , post.author)) {
+                                            subreddit.posts.remove(subredditPost);
+                                            numberOfPosts++;
+                                        }
+                                    }
+
+                                    System.out.println("Successfully removed " + numberOfPosts + "posts from u/" + post.author);
+                            }
+
+                        } else {
+                            post.viewPost();
+                            post.explorePost(searcherAccount);
+
+                        }
+
+                    }
                 }
 
                 return true;
