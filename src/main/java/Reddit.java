@@ -208,6 +208,7 @@ public class Reddit {
                    return;
 
                case 3 :
+                   commentScroller(post , account);
                    return;
 
                case 4 :
