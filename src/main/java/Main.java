@@ -33,6 +33,7 @@ public class Main {
                     break;
 
                 case 2 :
+                    account.createSubreddit();
                     break;
 
                 case 3 :
