@@ -382,7 +382,15 @@ public class Reddit {
 
                 Subreddit subreddit = subreddits.get(subredditsNames.indexOf(objectName));
 
-                postScroller(subreddit.posts , searcherAccount);
+
+                System.out.println("r/" + subreddit.name);
+                System.out.println("Number of posts : " + subreddit.posts.size());
+                System.out.println("Number of users : " + subreddit.users.size());
+
+                if (subreddit.posts.size() != 0) {
+                    postScroller(subreddit.posts , searcherAccount);
+                }
+
                 return true;
             }
         }
