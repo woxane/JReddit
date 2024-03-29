@@ -305,4 +305,37 @@ public class Reddit {
         }
     }
 
+
+
+    public static boolean search(String name , Account searcherAccount) {
+        Scanner scanner = new Scanner(System.in);
+        String objectName = name.substring(2);
+        ArrayList<String> usernames = getAllUsernames();
+        ArrayList<String> subredditsNames = getAllSubredditnames();
+
+        boolean isAccount = name.charAt(0) == 'u'; // if its account name or subreddits name
+
+        if (isAccount) {
+            if (usernames.contains(objectName)) {
+                Account account = accounts.get(usernames.indexOf(objectName));
+                account.viewProfile();
+                return true;
+
+            } else {
+                return false;
+            }
+
+        } else {
+            if (subredditsNames.contains(objectName)) {
+                Subreddit subreddit = subreddits.get(subredditsNames.indexOf(objectName));
+
+                postScroller(subreddit.posts , searcherAccount);
+                return true;
+
+            } else {
+                return false;
+            }
+        }
+    }
+
 }
