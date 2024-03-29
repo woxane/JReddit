@@ -63,7 +63,7 @@ public class Account {
         System.out.print("What title you want to set for your post : ");
         String title = scanner.nextLine();
 
-        System.out.println("Please enter the body text for your post : ");
+        System.out.print("Please enter the body text for your post : ");
         String content = scanner.nextLine();
 
         Post post = new Post(this , title , content , subreddit);

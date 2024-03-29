@@ -55,7 +55,7 @@ public class Reddit {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Hey , welcome to JReddit sign up page .");
-        System.out.print("\tTo continue please enter your email address : ");
+        System.out.print("To continue please enter your email address : ");
 
         do {
             emailAddress = scanner.nextLine();
