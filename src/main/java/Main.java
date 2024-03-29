@@ -103,7 +103,7 @@ public class Main {
             }
         }
 
-        Reddit.postScroller(posts);
+        Reddit.postScroller(posts , account);
     }
 
 
