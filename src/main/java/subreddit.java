@@ -11,6 +11,7 @@ public class Subreddit {
     Subreddit (Account owner , String name) {
         this.owner = owner;
         this.name = name;
+        users.add(owner);
     }
 
     public void viewSubreddit() {
