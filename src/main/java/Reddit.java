@@ -228,13 +228,70 @@ public class Reddit {
                    boolean isUpVote = vote == 2;
 
                    account.vote(post , isUpVote);
-                   account.updateKarma();
+                    post.author.updateKarma();
 
                default :
                    return;
            }
        }
         
+    }
+
+
+    public static void commentScroller(Post post , Account account) {
+        Scanner scanner = new Scanner(System.in);
+        String option;
+        Comment comment = null;
+
+        int commentNumber = 0;
+        while (commentNumber < post.comments.size()){
+            comment = post.comments.get(commentNumber);
+
+            comment.viewComment();
+
+            System.out.println("Enter to select , q to quite , w to go up , s to get down : ");
+            option = scanner.nextLine();
+
+            if (Objects.equals(option, "")) {
+                break;
+
+            } else if (Objects.equals(option, "w")) {
+                if (commentNumber!= 0) {
+                    commentNumber--;
+                }
+                continue;
+
+            } else if (Objects.equals(option , "s")) {
+                commentNumber++;
+                continue;
+
+            } else {
+                comment = null;
+                break;
+            }
+        }
+
+        if (comment == null) {
+            System.out.println("There is no comment anymore </3 .");
+            return;
+
+        } else {
+            boolean choose;
+            System.out.println("Would you want to vote 1) Yes / 2) No ");
+
+            choose = scanner.nextInt() == 1;
+
+            if (choose) {
+                boolean isUpVote;
+                System.out.println("1) Down / 2) Up");
+
+                isUpVote = scanner.nextInt() == 2;
+
+                account.vote(comment , isUpVote);
+                comment.author.updateKarma();
+            }
+            return;
+        }
     }
 
 }
