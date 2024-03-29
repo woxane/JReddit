@@ -46,7 +46,10 @@ public class Post {
                 return;
 
             case 3 :
-                Reddit.commentScroller(this , account);
+                Comment comment = Reddit.commentScroller(this , account);
+                if (comment != null) {
+                    comment.voteComment(account);
+                }
                 return;
 
             case 4 :
