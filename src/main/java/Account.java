@@ -30,6 +30,7 @@ public class Account {
         System.out.println("Email = " + this.emailAddress);
         System.out.println("Karma = " + this.karma);
         System.out.println("Number of joined subreddits = " + this.joinedSubreddits.size());
+        this.viewSubreddits();
 
         System.out.println("Karmas : ");
         System.out.println("\tPosts : ");
