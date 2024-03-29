@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Post {
     final Account author;
@@ -26,5 +27,51 @@ public class Post {
         for (Comment comment : comments) {
             comment.viewComment();
         }
+    }
+
+
+    public void explorePost(Account account) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Vote     5) Quite");
+        int exploreOption = scanner.nextInt();
+
+        switch (exploreOption) {
+            case 1 :
+                Reddit.postScroller(this.subreddit.posts , account);
+                break;
+
+            case 2 :
+                this.author.viewProfile();
+                return;
+
+            case 3 :
+                Reddit.commentScroller(this , account);
+                return;
+
+            case 4 :
+                int vote;
+                System.out.print("1) Down / 2) Up : ");
+
+                do {
+                    vote = scanner.nextInt();
+
+                    if (vote == 1 | vote == 2) {
+                        break;
+
+                    } else {
+                        System.out.println("Please choose between 1 or 2 : ");
+                    }
+                } while (true);
+
+                boolean isUpVote = vote == 2;
+
+                account.vote(this, isUpVote);
+                this.author.updateKarma();
+
+            default :
+                return;
+        }
+
     }
 }
