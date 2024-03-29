@@ -32,8 +32,9 @@ public class Post {
 
     public void explorePost(Account account) {
         Scanner scanner = new Scanner(System.in);
+        Comment comment;
 
-        System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Vote     5) Quite");
+        System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments\n Or :\n4) Vote    5) Leave a comment     6) Quite");
         int exploreOption = scanner.nextInt();
 
         switch (exploreOption) {
@@ -46,7 +47,7 @@ public class Post {
                 return;
 
             case 3 :
-                Comment comment = Reddit.commentScroller(this , account);
+                comment = Reddit.commentScroller(this , account);
                 if (comment != null) {
                     comment.voteComment(account);
                 }
@@ -71,6 +72,15 @@ public class Post {
 
                 account.vote(this, isUpVote);
                 this.author.updateKarma();
+
+
+            case 5 :
+                System.out.print("Enter something : ");
+                String content = scanner.nextLine();
+
+                comment = new Comment(account , content , this);
+                comments.add(comment);
+                account.comments.add(comment);
 
             default :
                 return;
