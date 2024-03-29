@@ -83,6 +83,7 @@ public class Account {
         Subreddit subreddit = new Subreddit(this , name);
 
         Reddit.subreddits.add(subreddit);
+        this.joinedSubreddits.add(subreddit);
     }
 
 
