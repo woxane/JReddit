@@ -68,6 +68,25 @@ public class Main {
                     }
 
                 case 4 :
+                    String name;
+                    char nameStartswith;
+
+                    System.out.print("Enter what you want to search (starts with r/ for subreddits or u/ for users) : ");
+
+                    do {
+                        name = scanner.nextLine();
+                        nameStartswith = name.charAt(0);
+
+                        if (nameStartswith == 'u' | nameStartswith == 'r') {
+                            break;
+                        } else {
+                            System.out.print("Please the name you want starts with r/ or u/ : ");
+
+                        }
+                    } while (true);
+
+                    Reddit.search(name , account);
+
                     break;
 
                 case 5 :
