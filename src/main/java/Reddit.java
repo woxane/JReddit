@@ -164,7 +164,7 @@ public class Reddit {
     }
 
 
-    public static void postScroller(ArrayList<Post> posts , Account account) {
+    public static Post postScroller(ArrayList<Post> posts , Account account) {
         Scanner scanner = new Scanner(System.in);
         Post post = null;
         int postNumber = 0;
@@ -182,7 +182,7 @@ public class Reddit {
             option = scanner.nextLine();
 
             if (Objects.equals(option, "")) {
-                break;
+                return post;
 
             } else if (Objects.equals(option, "w")) {
                 if (postNumber != 0) {
@@ -195,58 +195,13 @@ public class Reddit {
                 continue;
 
             } else {
-                post = null;
-                break;
+                return null;
             }
         }
-        
-       if (post == null){
-           System.out.println("There is no post anymore </3 .");
-           return;
 
-       } else {
-           post.viewPost();
-           System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Vote     5) Quite");
-           int exploreOption = scanner.nextInt();
+       System.out.println("There is no post anymore </3 .");
 
-           switch (exploreOption) {
-               case 1 :
-                   postScroller(post.subreddit.posts , account);
-                   break;
-
-               case 2 :
-                   post.author.viewProfile();
-                   return;
-
-               case 3 :
-                   commentScroller(post , account);
-                   return;
-
-               case 4 :
-                   int vote;
-                   System.out.print("1) Down / 2) Up : ");
-
-                   do {
-                       vote = scanner.nextInt();
-
-                       if (vote == 1 | vote == 2) {
-                           break;
-
-                       } else {
-                           System.out.println("Please choose between 1 or 2 : ");
-                       }
-                   } while (true);
-
-                   boolean isUpVote = vote == 2;
-
-                   account.vote(post , isUpVote);
-                    post.author.updateKarma();
-
-               default :
-                   return;
-           }
-       }
-        
+       return null;
     }
 
 
