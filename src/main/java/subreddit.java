@@ -12,6 +12,7 @@ public class Subreddit {
         this.owner = owner;
         this.name = name;
         users.add(owner);
+        admins.add(owner);
     }
 
     public void viewSubreddit() {
