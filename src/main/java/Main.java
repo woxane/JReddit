@@ -37,9 +37,40 @@ public class Main {
                     break;
 
                 case 3 :
-                    break;
+                    if (account.joinedSubreddits.isEmpty()) {
+                        System.out.println("You have not joined any subreddits </3");
+                        break;
+
+                    } else {
+                        int choose;
+                        int number = 1;
+
+                        System.out.print("Please choose between one of the above subreddits : ");
+
+                        for (Subreddit subreddit : account.joinedSubreddits) {
+                            System.out.println(number + ") r/" + subreddit.name);
+                            number++;
+
+                        }
+
+                        do {
+                            choose = scanner.nextInt();
+
+                            if (choose > 0 & choose <= account.joinedSubreddits.size()) {
+                                Subreddit subreddit = account.joinedSubreddits.get(choose - 1);
+                                account.createPost(subreddit);
+                                break;
+
+                            } else {
+                                System.out.print("Pleasae choose between one of the above : ");
+                            }
+                        } while(true);
+                    }
 
                 case 4 :
+                    break;
+
+                case 5 :
                     logOut = true;
                     break;
             }
@@ -113,7 +144,7 @@ public class Main {
         int option;
 
         System.out.println("where you want to go ? : ");
-        System.out.print("1) Timeline\t2)Create subreddit\n3) Search\t4) Log out\n: ");
+        System.out.print("1) Timeline\t2)Create subreddit\n3)Create post \n4) Search\t5) Log out\n: ");
 
         do {
             option = scanner.nextInt();
