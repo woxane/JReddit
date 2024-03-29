@@ -58,6 +58,11 @@ public class Account {
 
 
     public void createPost(Subreddit subreddit) {
+        if (subreddit.banedUsers.contains(this)) {
+            System.out.println("Sorry you can't create post in this subreddit (Actually banned)");
+        }
+
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("What title you want to set for your post : ");
