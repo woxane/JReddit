@@ -153,7 +153,7 @@ public class Reddit {
     }
 
 
-    public static void postScroller(ArrayList<Post> posts) {
+    public static void postScroller(ArrayList<Post> posts , Account account) {
         Scanner scanner = new Scanner(System.in);
         Post post = null;
         int postNumber = 0;
@@ -195,12 +195,12 @@ public class Reddit {
 
        } else {
            post.viewPost();
-           System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Quite ");
+           System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments     4) Vote     5) Quite");
            int exploreOption = scanner.nextInt();
 
            switch (exploreOption) {
                case 1 :
-                   postScroller(post.subreddit.posts);
+                   postScroller(post.subreddit.posts , account);
                    break;
 
                case 2 :
@@ -209,6 +209,26 @@ public class Reddit {
 
                case 3 :
                    return;
+
+               case 4 :
+                   int vote;
+                   System.out.print("1) Down / 2) Up : ");
+
+                   do {
+                       vote = scanner.nextInt();
+
+                       if (vote == 1 | vote == 2) {
+                           break;
+
+                       } else {
+                           System.out.println("Please choose between 1 or 2 : ");
+                       }
+                   } while (true);
+
+                   boolean isUpVote = vote == 2;
+
+                   account.vote(post , isUpVote);
+                   account.updateKarma();
 
                default :
                    return;
