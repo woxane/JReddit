@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Post {
     final Account author;
     final String title;
     final String content;
     final Subreddit subreddit;
+    final UUID postID;
     int vote;
     ArrayList<Comment> comments = new ArrayList<>();
     ArrayList<Vote> votes = new ArrayList<>();
@@ -16,6 +18,7 @@ public class Post {
         this.content = content;
         this.subreddit = subreddit;
         this.vote = 0;
+        this.postID = UUID.randomUUID();
     }
 
     public void viewPost() {

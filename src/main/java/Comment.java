@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Comment {
     final Account author;
     final Post post;
     final String content;
+    final UUID commentId;
     int vote;
     ArrayList<Vote> votes = new ArrayList<>();
 
@@ -13,6 +15,7 @@ public class Comment {
         this.content = content;
         this.post = post;
         this.vote = 0;
+        this.commentId = UUID.randomUUID();
     }
 
 
