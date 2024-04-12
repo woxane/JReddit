@@ -75,7 +75,8 @@ public class Admin extends Account{
                     option = scanner.nextInt() == 1;
 
                     if (option) {
-                        subreddit.admins.add(account);
+                        Admin admin = new Admin(account , subreddit);
+                        subreddit.admins.add(admin);
                         System.out.println("User u/" + account.username + " has successfully added to admins <3");
 
                     } else {
