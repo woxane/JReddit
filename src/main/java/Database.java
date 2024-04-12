@@ -175,4 +175,22 @@ public class Database {
         statement.executeUpdate(exequte);
 
     }
+
+
+    public static void addAdmin(Admin admin , Subreddit subreddit) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SELECT adminID FROM Subreddit WHERE subredditID = " + subreddit.subredditID.toString());
+        String adminIDs = "";
+
+        if (resultSet.next()) {
+            adminIDs = resultSet.getString("adminID");
+        }
+
+        ArrayList<String> listOfAdminId = new ArrayList<>(Arrays.asList(adminIDs.split(",")));
+        listOfAdminId.add(admin.accountID.toString());
+
+        adminIDs = String.join("," , listOfAdminId);
+
+        String exequte = String.format("UPDATE Subreddit SET adminID = '%s' WHERE subredditID = '%s'" , adminIDs , subreddit.subredditID.toString());
+        statement.executeUpdate(exequte);
+    }
 }
