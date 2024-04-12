@@ -74,4 +74,11 @@ public class Database {
         statement.executeUpdate(exequte);
 
     }
+
+    public static void insertSubreddit(Subreddit subreddit) throws SQLException {
+        String exequte = String.format("INSERT INTO Subreddit (name , ownerID , subredditID , adminID , banedUserID , userID , postID) " +
+        "VALUES ('%s' , '%s' , '%s' , '%s' , '%s' , '%s' , '%s')" , subreddit.name , subreddit.owner.accountID , subreddit.subredditID , subreddit.owner.accountID + "," , "", subreddit.owner.accountID+"," , "");
+
+        statement.executeUpdate(exequte);
+    }
 }
