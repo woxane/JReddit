@@ -367,7 +367,7 @@ public class Reddit {
 
                             } while (true);
 
-                            Account account = accounts.get(input - 1);
+                            Account account = similarAccounts.get(input - 1);
 
 
                             if (subreddit.users.contains(account)) {
