@@ -322,6 +322,22 @@ public class Reddit {
                 System.out.println("r/" + subreddit.name);
                 System.out.println("Number of posts : " + subreddit.posts.size());
                 System.out.println("Number of users : " + subreddit.users.size());
+                System.out.println(searcherAccount.joinedSubreddits.contains(subreddit) ? "Followed" : "Follow");
+
+                System.out.println("\nWant to " + (searcherAccount.joinedSubreddits.contains(subreddit) ? "Unfollow" : "Follow") + " (y/n) : ");
+                boolean option = scanner.nextLine() == "y";
+
+                if (option) {
+                    if (searcherAccount.joinedSubreddits.contains(subreddit)) {
+                        searcherAccount.joinedSubreddits.remove(subreddit);
+                        subreddit.users.remove(searcherAccount);
+
+                    } else {
+                        searcherAccount.joinedSubreddits.add(subreddit);
+                        subreddit.users.add(searcherAccount);
+                    }
+                }
+
 
                 Admin admin = subreddit.adminCheck(searcherAccount);
                 if (admin != null) {
