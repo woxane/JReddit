@@ -5,9 +5,9 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 
 public class Database {
-    Connection connection;
+    static Connection connection;
 
-    Database() {
+    static {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:src/main/java/Reddit.db");
         } catch (SQLException e) {
@@ -15,7 +15,7 @@ public class Database {
         }
     }
 
-    public ArrayList<String> getAllUsernames() throws SQLException {
+    public static ArrayList<String> getAllUsernames() throws SQLException {
         ArrayList<String> usernames = new ArrayList<>();
         String username;
 
@@ -31,7 +31,7 @@ public class Database {
     }
 
 
-    public ArrayList<String> getAllSubredditNames() throws SQLException {
+    public static ArrayList<String> getAllSubredditNames() throws SQLException {
         ArrayList<String> names = new ArrayList<>();
         String name;
 
@@ -47,7 +47,7 @@ public class Database {
 
     }
 
-    public ArrayList<String> getAllEmails() throws SQLException{
+    public static ArrayList<String> getAllEmails() throws SQLException{
         ArrayList<String> emailAddress = new ArrayList<>();
         String email ;
 
