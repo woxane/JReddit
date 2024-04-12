@@ -95,4 +95,9 @@ public class Database {
         String exequte = String.format("INSERT INTO Admin (subredditID , adminID) VALUES ('%s' , '%s')" , admin.subreddit.subredditID , admin.accountID);
         statement.executeUpdate(exequte);
     }
+
+    public static void insertVote(Vote vote) throws  SQLException {
+        String exequte = String.format("INSERT INTO Vote (voterID , isUpVote , voteID) VALUES ('%s' , %s , '%s')" , vote.voter.accountID , vote.isUpVote , vote.voteID);
+        statement.executeUpdate(exequte);
+    }
 }
