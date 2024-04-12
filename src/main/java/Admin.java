@@ -9,6 +9,15 @@ public class Admin extends Account{
     }
 
 
+
+    public boolean adminCheck(Account account) {
+        if (this.accountID == account.accountID) {
+            return true;
+        }
+        return false;
+    }
+
+
     public void adminAction() {
         boolean page = true;
         boolean option;
