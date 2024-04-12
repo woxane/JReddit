@@ -116,7 +116,26 @@ public class Database {
 
         userIDs = String.join("," , listOfUserId);
 
-        String exequte = String.format("UPDATE Subreddit SET userID = '%s' WHERE subredditID = '%S'" , userIDs , subreddit.subredditID);
+        String exequte = String.format("UPDATE Subreddit SET userID = '%s' WHERE subredditID = '%S'" , userIDs , subreddit.subredditID.toString());
         statement.executeUpdate(exequte);
     }
+
+
+    public static void addUserSubreddit(Account account , Subreddit subreddit) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SELECT subredditID FROM Accounts WHERE accountID = " + account.accountID.toString());
+        String subredditIDs = "";
+
+        if (resultSet.next()) {
+            subredditIDs = resultSet.getString("subredditID");
+        }
+
+        ArrayList<String> listOfSubredditId  = new ArrayList<>(Arrays.asList(subredditIDs.split(",")));
+        listOfSubredditId.add(subreddit.subredditID.toString());
+
+        subredditIDs = String.join("," , listOfSubredditId);
+
+        String exequte = String.format("UPDATE Accounts SET subredditID = '%s' WHERE accountID = '%s'" , subredditIDs , account.accountID.toString());
+        statement.executeUpdate(exequte);
+    }
+
 }
