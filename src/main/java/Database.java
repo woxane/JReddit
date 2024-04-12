@@ -46,4 +46,19 @@ public class Database {
         return names;
 
     }
+
+    public ArrayList<String> getAllEmails() throws SQLException{
+        ArrayList<String> emailAddress = new ArrayList<>();
+        String email ;
+
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT emailAddress FROM Accounts");
+
+        while(resultSet.next()) {
+            email = resultSet.getString("emailAddress");
+            emailAddress.add(email);
+        }
+
+        return emailAddress;
+    }
 }
