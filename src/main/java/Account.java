@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -21,6 +22,13 @@ public class Account {
         this.password = DigestUtils.sha256Hex(password);
         this.emailAddress = emailAddress;
         this.accountID = UUID.randomUUID();
+
+        try {
+            Database.insertAccount(this);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     Account(String name , String username , String password , String emailAddress , UUID accountID) {
