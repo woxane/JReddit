@@ -5,7 +5,7 @@ public class Subreddit {
     String name;
     Account owner;
     final UUID subredditID;
-    ArrayList<Account> admins = new ArrayList<>();
+    ArrayList<Admin> admins = new ArrayList<>();
     ArrayList<Account> banedUsers = new ArrayList<>();
     ArrayList<Account> users = new ArrayList<>();
     ArrayList<Post> posts = new ArrayList<>();
@@ -15,7 +15,9 @@ public class Subreddit {
         this.name = name;
         this.subredditID = UUID.randomUUID();
         users.add(owner);
-        admins.add(owner);
+
+        Admin admin = new Admin(owner , this);
+        admins.add(admin);
     }
 
     public void viewSubreddit() {
@@ -24,5 +26,15 @@ public class Subreddit {
         for (Post post : posts) {
             post.viewPost();
         }
+    }
+
+    public boolean adminCheck(Account account) {
+        for (Admin admin : admins) {
+            if (admin.accountID == account.accountID) {
+                return true;
+            }
+        }
+        return false;
+
     }
 }
