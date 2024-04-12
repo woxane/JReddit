@@ -10,12 +10,6 @@ public class Vote {
         this.voter = voter;
         this.isUpVote = isUpVote;
         this.voteID = UUID.randomUUID();
-
-        try {
-            Database.insertVote(this);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }

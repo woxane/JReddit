@@ -19,11 +19,6 @@ public class Comment {
         this.vote = 0;
         this.commentId = UUID.randomUUID();
 
-        try {
-            Database.insertComment(this);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 

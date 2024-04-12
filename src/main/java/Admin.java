@@ -9,11 +9,6 @@ public class Admin extends Account{
         super(account.name, account.username, account.password, account.emailAddress , account.accountID);
         this.subreddit = subreddit;
 
-        try {
-            Database.insertAdmin(this);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 

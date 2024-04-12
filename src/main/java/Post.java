@@ -21,11 +21,6 @@ public class Post {
         this.vote = 0;
         this.postID = UUID.randomUUID();
 
-        try {
-            Database.insertPost(this);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void viewPost() {

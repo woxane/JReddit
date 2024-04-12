@@ -211,4 +211,31 @@ public class Database {
         String exequte = String.format("UPDATE Subreddit SET adminID = '%s' WHERE subredditID = '%s'" , adminIDs , subreddit.subredditID.toString());
         statement.executeUpdate(exequte);
     }
+
+
+    public static ArrayList<Post> getSubredditPosts(Subreddit subreddit) throws SQLException {
+        ArrayList<Post> posts = new ArrayList<>();
+        Post post = null;
+        int vote;
+        String accountID , title , content , voteIDs , commentIDs;
+        int karma;
+        String name , username , password , emailAddress , subredditIDs , commentIds , postIds;
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM Post WHERE subredditID = " + subreddit.subredditID.toString());
+
+        while(resultSet.next()) {
+            accountID = resultSet.getString("accountID");
+            title = resultSet.getString("title");
+            content = resultSet.getString("content");
+            vote = resultSet.getInt("vote");
+            voteIDs = resultSet.getString("voteID");
+            commentIDs = resultSet.getString("commentID");
+
+            resultSet = statement.executeQuery("SELECT ");
+
+
+        }
+        return null;
+
+
+    }
 }

@@ -20,11 +20,6 @@ public class Subreddit {
         Admin admin = new Admin(owner , this);
         admins.add(admin);
 
-        try {
-            Database.insertSubreddit(this);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void viewSubreddit() {
