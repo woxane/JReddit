@@ -58,12 +58,13 @@ public class Admin extends Account{
             Account account = similarAccounts.get(input - 1);
 
             if (subreddit.users.contains(account)) {
-                if (subreddit.admins.contains(account)) {
+                Admin admin = subreddit.adminCheck(account);
+                if (admin == null) {
                     System.out.println("This user is already admin , would you want to remove it ? : 1) Yes 2) No");
                     option = scanner.nextInt() == 1;
 
                     if (option) {
-                        subreddit.admins.remove(account);
+                        subreddit.admins.remove(admin);
                         System.out.println("Successfully removed <3");
 
                     } else {
@@ -75,7 +76,7 @@ public class Admin extends Account{
                     option = scanner.nextInt() == 1;
 
                     if (option) {
-                        Admin admin = new Admin(account , subreddit);
+                        admin = new Admin(account , subreddit);
                         subreddit.admins.add(admin);
                         System.out.println("User u/" + account.username + " has successfully added to admins <3");
 
