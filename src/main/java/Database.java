@@ -157,4 +157,22 @@ public class Database {
 
     }
 
+
+    public static void removeUserSubreddit(Account account , Subreddit subreddit) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SELECT subredditID FROM Accounts WHERE accountID = " + account.accountID.toString());
+        String subredditIDs = "";
+
+        if (resultSet.next()) {
+            subredditIDs = resultSet.getString("subredditID");
+        }
+
+        ArrayList<String> listOfSubredditId  = new ArrayList<>(Arrays.asList(subredditIDs.split(",")));
+        listOfSubredditId.remove(subreddit.subredditID.toString());
+
+        subredditIDs = String.join("," , listOfSubredditId);
+
+        String exequte = String.format("UPDATE Accounts SET subredditID = '%s' WHERE accountID = '%s'" , subredditIDs , account.accountID.toString());
+        statement.executeUpdate(exequte);
+
+    }
 }
