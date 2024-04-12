@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
@@ -19,6 +20,12 @@ public class Post {
         this.subreddit = subreddit;
         this.vote = 0;
         this.postID = UUID.randomUUID();
+
+        try {
+            Database.insertPost(this);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void viewPost() {
