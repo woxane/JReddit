@@ -179,10 +179,10 @@ public class Main {
         do {
             option = scanner.nextInt();
 
-            if (option > 0 & option < 5) {
+            if (option > 0 & option < 6) {
                 break;
             } else {
-                System.out.print("Please choose between 1 , 4 : ");
+                System.out.print("Please choose between 1 , 5 : ");
             }
         } while (true);
 
