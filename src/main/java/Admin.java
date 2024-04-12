@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -7,6 +8,12 @@ public class Admin extends Account{
     Admin(Account account , Subreddit subreddit) {
         super(account.name, account.username, account.password, account.emailAddress , account.accountID);
         this.subreddit = subreddit;
+
+        try {
+            Database.insertAdmin(this);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
