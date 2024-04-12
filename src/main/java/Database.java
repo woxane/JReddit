@@ -9,9 +9,24 @@ public class Database {
 
     Database() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Reddit.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:src/main/java/Reddit.db");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<String> getAllUsernames() throws SQLException {
+        ArrayList<String> usernames = new ArrayList<>();
+        String username;
+
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT username from Accounts");
+
+        while (resultSet.next()) {
+            username = resultSet.getString("username");
+            usernames.add(username);
+        }
+
+        return usernames;
     }
 }
