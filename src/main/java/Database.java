@@ -89,4 +89,10 @@ public class Database {
         statement.executeUpdate(exequte);
 
     }
+
+
+    public static void insertAdmin(Admin admin) throws SQLException {
+        String exequte = String.format("INSERT INTO Admin (subredditID , adminID) VALUES ('%s' , '%s')" , admin.subreddit.subredditID , admin.accountID);
+        statement.executeUpdate(exequte);
+    }
 }
