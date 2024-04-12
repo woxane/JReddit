@@ -91,6 +91,13 @@ public class Main {
                     break;
 
                 case 5 :
+                    Post post = Reddit.postScroller(account.posts , account);
+
+                    if (post != null) {
+                        post.viewPost();
+                        post.explorePost(account);
+                    }
+                case 6 :
                     logOut = true;
                     break;
             }
@@ -177,12 +184,12 @@ public class Main {
         int option;
 
         System.out.println("where you want to go ? : ");
-        System.out.print("1) Timeline\t2)Create subreddit\n3)Create post \n4) Search\t5) Log out\n: ");
+        System.out.print("1) Timeline\t2)Create subreddit\n3)Create post \n4) Search\n5)Show my posts\n6) Log out\n: ");
 
         do {
             option = scanner.nextInt();
 
-            if (option > 0 & option < 6) {
+            if (option > 0 & option < 7) {
                 break;
             } else {
                 System.out.print("Please choose between 1 , 5 : ");
