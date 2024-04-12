@@ -6,10 +6,12 @@ import java.util.regex.Pattern;
 
 public class Database {
     static Connection connection;
+    static Statement statement;
 
     static {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:src/main/java/Reddit.db");
+            statement = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -19,7 +21,6 @@ public class Database {
         ArrayList<String> usernames = new ArrayList<>();
         String username;
 
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT username FROM Accounts");
 
         while (resultSet.next()) {
@@ -35,7 +36,6 @@ public class Database {
         ArrayList<String> names = new ArrayList<>();
         String name;
 
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT name FROM Subreddit");
 
         while(resultSet.next()) {
@@ -51,7 +51,6 @@ public class Database {
         ArrayList<String> emailAddress = new ArrayList<>();
         String email ;
 
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT emailAddress FROM Accounts");
 
         while(resultSet.next()) {
@@ -60,5 +59,11 @@ public class Database {
         }
 
         return emailAddress;
+    }
+
+    public static void insertAccount(Account account) throws SQLException {
+        String exequte = String.format("INSERT INTO Accounts (name , username , password , emailAddress , karma , accountID , subredditID , commentID , postID) " +
+                        "VALUES ('%s' , '%s' , '%s' , '%s' , %d , '%s' , '%s' , '%s' , '%s')" , account.name , account.username , account.password , account.emailAddress , account.karma , account.accountID , "" , "" , "");
+        statement.executeUpdate(exequte);
     }
 }
