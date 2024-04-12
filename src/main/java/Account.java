@@ -23,6 +23,14 @@ public class Account {
         this.accountID = UUID.randomUUID();
     }
 
+    Account(String name , String username , String password , String emailAddress , UUID accountID) {
+        this.name = name;
+        this.username = username;
+        this.password = DigestUtils.sha256Hex(password);
+        this.emailAddress = emailAddress;
+        this.accountID = accountID;
+    }
+
 
     public void viewProfile() {
         System.out.println("Name = " + this.name) ;
