@@ -1,3 +1,5 @@
+import javax.xml.crypto.Data;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
@@ -16,6 +18,12 @@ public class Comment {
         this.post = post;
         this.vote = 0;
         this.commentId = UUID.randomUUID();
+
+        try {
+            Database.insertComment(this);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
