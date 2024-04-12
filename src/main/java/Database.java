@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -98,6 +99,24 @@ public class Database {
 
     public static void insertVote(Vote vote) throws  SQLException {
         String exequte = String.format("INSERT INTO Vote (voterID , isUpVote , voteID) VALUES ('%s' , %s , '%s')" , vote.voter.accountID , vote.isUpVote , vote.voteID);
+        statement.executeUpdate(exequte);
+    }
+
+
+    public static void addSubredditUser(Account account , Subreddit subreddit) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SELECT userID FROM Subreddit WHERE subredditID = " + subreddit.subredditID.toString());
+        String userIDs = "";
+
+        if (resultSet.next()) {
+            userIDs = resultSet.getString("userID");
+        }
+
+        ArrayList<String> listOfUserId = new ArrayList<>(Arrays.asList(userIDs.split(",")));
+        listOfUserId.add(account.accountID.toString());
+
+        userIDs = String.join("," , listOfUserId);
+
+        String exequte = String.format("UPDATE Subreddit SET userID = '%s' WHERE subredditID = '%S'" , userIDs , subreddit.subredditID);
         statement.executeUpdate(exequte);
     }
 }
