@@ -60,7 +60,12 @@ public class Admin extends Account{
 
             if (subreddit.users.contains(account)) {
                 Admin admin = subreddit.adminCheck(account);
-                if (admin == null) {
+                if (admin != null) {
+                    if (Objects.equals(admin , subreddit.owner)) {
+                        System.out.println("This account is owner of this subreddit , you can't do anything </3");
+                        continue;
+                    }
+
                     System.out.println("This user is already admin , would you want to remove it ? : 1) Yes 2) No");
                     option = scanner.nextInt() == 1;
 
