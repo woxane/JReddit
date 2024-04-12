@@ -66,4 +66,12 @@ public class Database {
                         "VALUES ('%s' , '%s' , '%s' , '%s' , %d , '%s' , '%s' , '%s' , '%s')" , account.name , account.username , account.password , account.emailAddress , account.karma , account.accountID , "" , "" , "");
         statement.executeUpdate(exequte);
     }
+
+    public static void insertComment(Comment comment) throws SQLException {
+        String exequte = String.format("INSERT INTO Comment (accountID , postID , content , commentID , vote , voteID) " +
+                "VALUES ('%s' , '%s' , '%s' , '%s' , 0 ,'%s')" , comment.commentId , comment.post.postID , comment.content , comment.commentId , "" );
+
+        statement.executeUpdate(exequte);
+
+    }
 }
