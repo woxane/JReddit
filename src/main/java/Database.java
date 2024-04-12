@@ -81,4 +81,12 @@ public class Database {
 
         statement.executeUpdate(exequte);
     }
+
+    public static void insertPost(Post post) throws SQLException {
+        String exequte = String.format("INSERT INTO Post (accountID , title , content , subredditID , postID , vote , voteID , commentID) " +
+                "VALUES ('%s' , '%s' , '%s' , '%s' , '%s' , %d , '%s' , '%s')" , post.author.accountID , post.title , post.content , post.subreddit.subredditID , post.postID , post.vote , "" , "");
+
+        statement.executeUpdate(exequte);
+
+    }
 }
