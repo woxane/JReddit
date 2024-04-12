@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Admin extends Account{
@@ -91,8 +92,39 @@ public class Admin extends Account{
             }
 
         }
-
-
     }
 
+    public void postInteraction(Post post) {
+        int option;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Hey Admin , Choose : \n1) Delete this post \n2) Ban the author and delete all the post of his");
+
+        do {
+            option = scanner.nextInt();
+
+            if (option == 1 | option == 2) {
+                break;
+
+            } else {
+                System.out.print("Please choose one of the above : ");
+            }
+        } while (true);
+
+        switch (option) {
+            case 1:
+                subreddit.posts.remove(post);
+
+            case 2:
+                subreddit.banedUsers.add(post.author);
+                int numberOfPosts = 0;
+
+                for (Post subredditPost : subreddit.posts) {
+                    if (Objects.equals(subredditPost.author, post.author)) {
+                        subreddit.posts.remove(subredditPost);
+                        numberOfPosts++;
+                    }
+                }
+                System.out.println("Successfully removed " + numberOfPosts + "posts from u/" + post.author);
+        }
+    }
 }
