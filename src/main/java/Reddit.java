@@ -323,91 +323,9 @@ public class Reddit {
                 System.out.println("Number of posts : " + subreddit.posts.size());
                 System.out.println("Number of users : " + subreddit.users.size());
 
-
-                if (subreddit.admins.contains(searcherAccount)) {
-                    boolean adminPage = true;
-
-                    while (adminPage) {
-                        System.out.println("Hey Admin , Do you want to add/remove some admin ? (the user must be joined to this subreddit) : 1) Yes 2) No : ");
-                        boolean option = scanner.nextInt() == 1;
-
-                        if (option) {
-                            System.out.print("Please enter the username of this user : u/");
-                            String username = scanner.nextLine();
-
-                            ArrayList<Account> similarAccounts = findSimilarUsernames(username);
-
-                            if (similarAccounts.isEmpty()) {
-                                System.out.println("Sorry we could find any account with that username </3");
-                                adminPage = false;
-                                continue;
-
-                            }
-
-                            System.out.println("Please choose one of the above similar usernames : ");
-                            int optionNumber = 1;
-                            int input;
-
-                            for (Account account : similarAccounts) {
-                                System.out.println(optionNumber + ") u/" + account.username);
-                                optionNumber++;
-
-                            }
-
-                            System.out.print(": ");
-
-                            do {
-                                input = scanner.nextInt();
-
-                                if (input > 0 & input <= similarAccounts.size())  {
-                                    break;
-                                } else {
-                                    System.out.print("Please choose one of the above : ");
-                                }
-
-                            } while (true);
-
-                            Account account = similarAccounts.get(input - 1);
-
-
-                            if (subreddit.users.contains(account)) {
-                                if (subreddit.admins.contains(account)) {
-                                    System.out.println("This user is already admin , would you want to remove it ? : 1) Yes 2) No");
-                                    option = scanner.nextInt() == 1;
-
-                                    if (option) {
-                                        subreddit.admins.remove(account);
-                                        System.out.println("Successfully removed <3");
-
-                                    } else {
-                                        System.out.println("Ok <3");
-                                    }
-
-                                } else {
-                                    System.out.println("This user isn't in admins list , would you want to add it ? : 1) Yes 2) No");
-                                    option = scanner.nextInt() == 1;
-
-                                    if (option) {
-                                        subreddit.admins.add(account);
-                                        System.out.println("User u/" + account.username + " has successfully added to admins <3");
-
-                                    } else {
-                                        System.out.println("Ok <3");
-                                    }
-                                }
-
-
-                            } else {
-                                System.out.println("Sorry but this user isn't joined to this subreddit already </3 .");
-                            }
-
-
-
-                        } else {
-                            adminPage = false;
-
-                        }
-                    }
+                Admin admin = subreddit.adminCheck(searcherAccount);
+                if (admin != null) {
+                    admin.adminAction();
                 }
 
 
@@ -415,38 +333,8 @@ public class Reddit {
                     Post post = postScroller(subreddit.posts , searcherAccount);
 
                     if (post != null) {
-                        if (subreddit.admins.contains(searcherAccount)) {
-                            int option;
-                            System.out.print("Hey Admin , Choose : \n1) Delete this post \n2) Ban the author and delete all the post of his");
-
-                            do {
-                                option = scanner.nextInt();
-
-                                if (option == 1 | option == 2) {
-                                    break;
-
-                                } else {
-                                    System.out.print("Please choose one of the above : ");
-                                }
-                            } while (true);
-
-                            switch (option) {
-                                case 1 :
-                                    subreddit.posts.remove(post);
-
-                                case 2 :
-                                    subreddit.banedUsers.add(post.author);
-                                    int numberOfPosts = 0;
-
-                                    for (Post subredditPost : subreddit.posts) {
-                                        if (Objects.equals(subredditPost.author , post.author)) {
-                                            subreddit.posts.remove(subredditPost);
-                                            numberOfPosts++;
-                                        }
-                                    }
-
-                                    System.out.println("Successfully removed " + numberOfPosts + "posts from u/" + post.author);
-                            }
+                        if (admin != null) {
+                            admin.postInteraction(post);
 
                         } else {
                             post.viewPost();
@@ -454,6 +342,8 @@ public class Reddit {
 
                         }
 
+                    } else {
+                        System.out.println("Sorry , there is no post in here </3");
                     }
                 }
 
