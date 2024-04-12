@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -158,6 +159,8 @@ public class Main {
             System.out.println("This subreddit has no post </3");
             return;
         }
+
+        Collections.reverse(posts);
 
         Post post = Reddit.postScroller(posts , account);
 
