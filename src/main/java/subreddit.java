@@ -28,13 +28,13 @@ public class Subreddit {
         }
     }
 
-    public boolean adminCheck(Account account) {
+    public Admin adminCheck(Account account) {
         for (Admin admin : admins) {
             if (admin.accountID == account.accountID) {
-                return true;
+                return admin;
             }
         }
-        return false;
+        return null;
 
     }
 }
