@@ -103,13 +103,7 @@ public class Account {
 
 
     public boolean vote(Post post , boolean isUpVote) {
-        ArrayList<Account> accounts = new ArrayList<>();
-
-        for (Vote vote : post.votes) {
-            accounts.add(vote.voter);
-        }
-
-        if (accounts.contains(this)) {
+        if (!checkVote(post)) {
             return false;
         }
 
@@ -122,13 +116,7 @@ public class Account {
 
 
     public boolean vote(Comment comment , boolean isUpVote) {
-        ArrayList<Account> accounts = new ArrayList<>();
-
-        for (Vote vote : comment.votes) {
-            accounts.add(vote.voter);
-        }
-
-        if (accounts.contains(this)) {
+        if (!checkVote(comment)) {
             return false;
         }
 
@@ -172,5 +160,34 @@ public class Account {
                 this.karma += (vote.isUpVote ? 1 : 0);
             }
         }
+    }
+
+
+    public boolean checkVote(Post post) {
+        ArrayList<Account> accounts = new ArrayList<>();
+
+        for (Vote vote : post.votes) {
+            accounts.add(vote.voter);
+        }
+
+        if (accounts.contains(this)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean checkVote(Comment comment) {
+        ArrayList<Account> accounts = new ArrayList<>();
+
+        for (Vote vote : comment.votes) {
+            accounts.add(vote.voter);
+        }
+
+        if (accounts.contains(this)) {
+            return false;
+        }
+
+        return true;
     }
 }
