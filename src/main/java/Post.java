@@ -60,22 +60,43 @@ public class Post {
 
             case 4 :
                 int vote;
-                System.out.print("1) Down / 2) Up : ");
+
+                if (account.checkVote(this)) {
+                    System.out.println("You already voted\nWant to retract it ? (y/n)");
+                    boolean answer = scanner.nextLine() == "y";
+
+                    if (answer) {
+                        account.retractVote(this);
+                        this.author.updateKarma();
+                        System.out.println("Done !");
+                    }
+
+                }
+
+                System.out.print("Vote : \n1) Down / 2) Up / 3) Leave it : ");
 
                 do {
                     vote = scanner.nextInt();
 
-                    if (vote == 1 | vote == 2) {
+                    if (vote == 1 | vote == 2 | vote == 3) {
                         break;
 
                     } else {
-                        System.out.println("Please choose between 1 or 2 : ");
+                        System.out.println("Please choose between 1 or 2 or 3 : ");
                     }
                 } while (true);
 
+                if (vote == 3) {
+                    return;
+                }
+
                 boolean isUpVote = vote == 2;
 
-                account.vote(this, isUpVote);
+                boolean status = account.vote(this, isUpVote);
+                if (!status) {
+                    account.retractVote(this);
+                }
+
                 this.author.updateKarma();
 
 
