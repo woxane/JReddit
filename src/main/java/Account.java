@@ -103,7 +103,7 @@ public class Account {
 
 
     public boolean vote(Post post , boolean isUpVote) {
-        if (!checkVote(post)) {
+        if (checkVote(post)) {
             return false;
         }
 
@@ -116,7 +116,7 @@ public class Account {
 
 
     public boolean vote(Comment comment , boolean isUpVote) {
-        if (!checkVote(comment)) {
+        if (checkVote(comment)) {
             return false;
         }
 
@@ -171,10 +171,10 @@ public class Account {
         }
 
         if (accounts.contains(this)) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     public boolean checkVote(Comment comment) {
@@ -185,9 +185,9 @@ public class Account {
         }
 
         if (accounts.contains(this)) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 }
