@@ -61,11 +61,13 @@ public class Post {
             case 4 :
                 int vote;
 
-                if (account.checkVote(this)) {
+                if (account.checkVote(this) != null) {
                     System.out.println("You already voted\nWant to retract it ? (y/n)");
                     boolean answer = scanner.nextLine() == "y";
 
                     if (answer) {
+                        this.vote -= account.checkVote(this).isUpVote ? 1 : -1;
+
                         account.retractVote(this);
                         this.author.updateKarma();
                         System.out.println("Done !");
@@ -92,11 +94,8 @@ public class Post {
 
                 boolean isUpVote = vote == 2;
 
-                boolean status = account.vote(this, isUpVote);
-                if (!status) {
-                    account.retractVote(this);
-                }
-
+                account.vote(this, isUpVote);
+                this.vote += isUpVote ? 1 : -1;
                 this.author.updateKarma();
 
 

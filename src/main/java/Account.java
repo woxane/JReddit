@@ -103,7 +103,7 @@ public class Account {
 
 
     public boolean vote(Post post , boolean isUpVote) {
-        if (checkVote(post)) {
+        if (checkVote(post) != null) {
             return false;
         }
 
@@ -116,7 +116,7 @@ public class Account {
 
 
     public boolean vote(Comment comment , boolean isUpVote) {
-        if (checkVote(comment)) {
+        if (checkVote(comment) != null) {
             return false;
         }
 
@@ -163,31 +163,23 @@ public class Account {
     }
 
 
-    public boolean checkVote(Post post) {
-        ArrayList<Account> accounts = new ArrayList<>();
-
+    public Vote checkVote(Post post) {
         for (Vote vote : post.votes) {
-            accounts.add(vote.voter);
+            if (Objects.equals(vote.voter , this)) {
+                return vote;
+            }
         }
 
-        if (accounts.contains(this)) {
-            return true;
-        }
-
-        return false;
+        return null;
     }
 
-    public boolean checkVote(Comment comment) {
-        ArrayList<Account> accounts = new ArrayList<>();
-
+    public Vote checkVote(Comment comment) {
         for (Vote vote : comment.votes) {
-            accounts.add(vote.voter);
+            if (Objects.equals(vote.voter , this)) {
+                return vote;
+            }
         }
 
-        if (accounts.contains(this)) {
-            return true;
-        }
-
-        return false;
+        return null;
     }
 }

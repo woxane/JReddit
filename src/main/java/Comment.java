@@ -33,16 +33,31 @@ public class Comment {
         boolean choose;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Would you want to vote 1) Yes / 2) No ");
+        System.out.print("Want to vote ? : \n1) Yes / 2) No \n: ");
 
         choose = scanner.nextInt() == 1;
 
         if (choose) {
+
+            if (account.checkVote(this) != null) {
+                System.out.println("You already voted\nWant to retract it ? (y/n)");
+                boolean answer = scanner.nextLine() == "y";
+
+                if (answer) {
+                    this.vote -= account.checkVote(this).isUpVote ? 1 : -1;
+                    account.retractVote(this);
+                    this.author.updateKarma();
+                    System.out.println("Done !");
+                }
+
+            }
+
             boolean isUpVote;
             System.out.println("1) Down / 2) Up");
 
             isUpVote = scanner.nextInt() == 2;
 
+            this.vote += isUpVote ? 1 : -1;
             account.vote(this, isUpVote);
             this.author.updateKarma();
         }
