@@ -108,6 +108,7 @@ public class Reddit {
 
         do {
             loginMethod = scanner.nextInt();
+            scanner.nextLine();
 
             if (loginMethod == 1 | loginMethod == 2) {
                 switch (loginMethod) {
@@ -177,7 +178,7 @@ public class Reddit {
             System.out.println("r/" + post.subreddit.name + " via u/" + post.author.username);
             System.out.println(post.title);
             System.out.println(post.content);
-            System.out.println("Vote :" + post.vote);
+            System.out.println("Vote : " + post.vote);
 
             System.out.print("Enter to show more , q to quite , w to go up , s to get down : ");
             option = scanner.nextLine();
@@ -273,6 +274,7 @@ public class Reddit {
 
                 do {
                    choose = scanner.nextInt();
+                   scanner.nextLine();
 
                    if (choose > 0 | choose <= similarAccounts.size()) {
                         break;
@@ -307,6 +309,7 @@ public class Reddit {
 
                 do {
                     choose = scanner.nextInt();
+                    scanner.nextLine();
 
                     if (choose > 0 | choose <= similarSubreddits.size()){
                         break;

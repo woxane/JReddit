@@ -49,6 +49,7 @@ public class Admin extends Account{
 
             do {
                 input = scanner.nextInt();
+                scanner.nextLine();
 
                 if (input > 0 & input <= similarAccounts.size())  {
                     break;
@@ -70,6 +71,7 @@ public class Admin extends Account{
 
                     System.out.println("This user is already admin , would you want to remove it ? : 1) Yes 2) No");
                     option = scanner.nextInt() == 1;
+                    scanner.nextLine();
 
                     if (option) {
                         subreddit.admins.remove(admin);
@@ -82,6 +84,7 @@ public class Admin extends Account{
                 } else {
                     System.out.println("This user isn't in admins list , would you want to add it ? : 1) Yes 2) No");
                     option = scanner.nextInt() == 1;
+                    scanner.nextLine();
 
                     if (option) {
                         admin = new Admin(account , subreddit);
@@ -108,6 +111,7 @@ public class Admin extends Account{
 
         do {
             option = scanner.nextInt();
+            scanner.nextLine();
 
             if (option == 1 | option == 2) {
                 break;

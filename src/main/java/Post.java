@@ -41,6 +41,7 @@ public class Post {
 
         System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments\n Or :\n4) Vote    5) Leave a comment     6) Quite\n: ");
         int exploreOption = scanner.nextInt();
+        scanner.nextLine();
 
         switch (exploreOption) {
             case 1 :
@@ -79,6 +80,7 @@ public class Post {
 
                 do {
                     vote = scanner.nextInt();
+                    scanner.nextLine();
 
                     if (vote == 1 | vote == 2 | vote == 3) {
                         break;

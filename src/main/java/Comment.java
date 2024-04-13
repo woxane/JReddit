@@ -23,9 +23,8 @@ public class Comment {
 
 
     public void viewComment() {
-        System.out.println("\tu/" + author.username);
-        System.out.println("\t\t" + this.content);
-        System.out.println("\t" + this.vote + "^");
+        System.out.println("\tu/" + author.username + " : ");
+        System.out.println("\t\t" + this.content + " (vote : " + this.vote + ")");
     }
 
 
@@ -36,6 +35,7 @@ public class Comment {
         System.out.print("Want to vote ? : \n1) Yes / 2) No \n: ");
 
         choose = scanner.nextInt() == 1;
+        scanner.nextLine();
 
         if (choose) {
 
@@ -56,6 +56,7 @@ public class Comment {
             System.out.println("1) Down / 2) Up");
 
             isUpVote = scanner.nextInt() == 2;
+            scanner.nextLine();
 
             this.vote += isUpVote ? 1 : -1;
             account.vote(this, isUpVote);

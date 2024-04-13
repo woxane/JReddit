@@ -58,6 +58,7 @@ public class Main {
                         System.out.print(": ");
                         do {
                             choose = scanner.nextInt();
+                            scanner.nextLine();
 
                             if (choose > 0 & choose <= account.joinedSubreddits.size()) {
                                 Subreddit subreddit = account.joinedSubreddits.get(choose - 1);
@@ -129,6 +130,7 @@ public class Main {
 
         do {
             authMethod = scanner.nextInt();
+            scanner.nextLine();
 
             if (authMethod == 1 | authMethod == 2) {
                 Account account;
@@ -201,6 +203,7 @@ public class Main {
 
         do {
             option = scanner.nextInt();
+            scanner.nextLine();
 
             if (option > 0 & option < 8) {
                 break;
