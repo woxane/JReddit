@@ -176,10 +176,10 @@ public class Reddit {
 
             System.out.println("r/" + post.subreddit.name + " via u/" + post.author.username);
             System.out.println(post.title);
-            System.out.println("\t" + post.content);
-            System.out.println("\t\t" + post.vote + "^");
+            System.out.println(post.content);
+            System.out.println("Vote :" + post.vote);
 
-            System.out.println("Enter to show more , q to quite , w to go up , s to get down : ");
+            System.out.print("Enter to show more , q to quite , w to go up , s to get down : ");
             option = scanner.nextLine();
 
             if (Objects.equals(option, "")) {
@@ -216,7 +216,7 @@ public class Reddit {
 
             comment.viewComment();
 
-            System.out.println("Enter to select , q to quite , w to go up , s to get down : ");
+            System.out.print("Enter to select , q to quite , w to go up , s to get down : ");
             option = scanner.nextLine();
 
             if (Objects.equals(option, "")) {
@@ -324,14 +324,14 @@ public class Reddit {
                 System.out.println("Number of users : " + subreddit.users.size());
                 System.out.println(searcherAccount.joinedSubreddits.contains(subreddit) ? "Followed" : "Follow");
 
-                boolean option = false;
+                String option = "n";
 
                 if (!Objects.equals(subreddit.owner , searcherAccount)) {
                     System.out.println("\nWant to " + (searcherAccount.joinedSubreddits.contains(subreddit) ? "Unfollow" : "Follow") + " (y/n) : ");
-                    option = scanner.nextLine() == "y";
+                    option = scanner.nextLine();
                 }
 
-                if (option) {
+                if (option == "y") {
                     if (searcherAccount.joinedSubreddits.contains(subreddit)) {
                         if (subreddit.adminCheck(searcherAccount) != null) {
 

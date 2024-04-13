@@ -25,9 +25,9 @@ public class Post {
 
     public void viewPost() {
         System.out.println("r/" + this.subreddit.name + " via u/" + this.author.username);
-        System.out.println(this.title);
-        System.out.println("\n" + this.content);
-        System.out.println(this.vote + "^");
+        System.out.println(this.title + " :");
+        System.out.println("\t" + this.content);
+        System.out.println("Vote : " + this.vote);
 
         for (Comment comment : comments) {
             comment.viewComment();
@@ -39,7 +39,7 @@ public class Post {
         Scanner scanner = new Scanner(System.in);
         Comment comment;
 
-        System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments\n Or :\n4) Vote    5) Leave a comment     6) Quite");
+        System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments\n Or :\n4) Vote    5) Leave a comment     6) Quite\n: ");
         int exploreOption = scanner.nextInt();
 
         switch (exploreOption) {
@@ -63,9 +63,9 @@ public class Post {
 
                 if (account.checkVote(this) != null) {
                     System.out.println("You already voted\nWant to retract it ? (y/n)");
-                    boolean answer = scanner.nextLine() == "y";
+                    String answer = scanner.nextLine();
 
-                    if (answer) {
+                    if (answer == "y") {
                         this.vote -= account.checkVote(this).isUpVote ? 1 : -1;
 
                         account.retractVote(this);
@@ -97,6 +97,7 @@ public class Post {
                 account.vote(this, isUpVote);
                 this.vote += isUpVote ? 1 : -1;
                 this.author.updateKarma();
+                break;
 
 
             case 5 :
@@ -106,6 +107,7 @@ public class Post {
                 comment = new Comment(account , content , this);
                 comments.add(comment);
                 account.comments.add(comment);
+                break;
 
             default :
                 return;
