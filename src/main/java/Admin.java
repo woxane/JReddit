@@ -119,9 +119,32 @@ public class Admin extends Account{
 
         switch (option) {
             case 1:
+                if (this.accountID == post.subreddit.owner.accountID) {
+                    subreddit.posts.remove(post);
+                    break;
+                }
+
+                if (post.subreddit.adminCheck(post.author) != null) {
+                    System.out.println("Author of this post is admin you can't delete their post");
+                    break;
+                }
+
                 subreddit.posts.remove(post);
+                break;
 
             case 2:
+                if (this.accountID == post.subreddit.owner.accountID) {
+                    if (subreddit.adminCheck(post.author) != null) {
+                        subreddit.admins.remove(subreddit.adminCheck(post.author));
+                    }
+                }
+
+                if (post.subreddit.adminCheck(post.author) != null) {
+                    System.out.println("Author of this post is admin you can't delete their post and ban them </3");
+                    break;
+
+                }
+
                 subreddit.banedUsers.add(post.author);
                 int numberOfPosts = 0;
 
@@ -132,6 +155,7 @@ public class Admin extends Account{
                     }
                 }
                 System.out.println("Successfully removed " + numberOfPosts + "posts from u/" + post.author);
+                break;
         }
     }
 }

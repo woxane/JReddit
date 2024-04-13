@@ -35,6 +35,7 @@ public class Main {
 
                 case 2 :
                     account.createSubreddit();
+                    System.out.println("subreddit successfully created <3");
                     break;
 
                 case 3 :
