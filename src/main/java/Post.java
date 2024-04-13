@@ -55,7 +55,7 @@ public class Post {
             case 3 :
                 comment = Reddit.commentScroller(this , account);
                 if (comment != null) {
-                    comment.voteComment(account);
+                    comment.exploreComment(account);
                 }
                 return;
 
