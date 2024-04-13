@@ -46,7 +46,7 @@ public class Main {
                         int choose;
                         int number = 1;
 
-                        System.out.print("Please choose between one of the above subreddits : ");
+                        System.out.println("Please choose between one of the above subreddits : ");
 
                         for (Subreddit subreddit : account.joinedSubreddits) {
                             System.out.println(number + ") r/" + subreddit.name);
@@ -54,12 +54,14 @@ public class Main {
 
                         }
 
+                        System.out.print(": ");
                         do {
                             choose = scanner.nextInt();
 
                             if (choose > 0 & choose <= account.joinedSubreddits.size()) {
                                 Subreddit subreddit = account.joinedSubreddits.get(choose - 1);
                                 account.createPost(subreddit);
+                                System.out.println("Post successfully created <3");
                                 break;
 
                             } else {
@@ -67,6 +69,7 @@ public class Main {
                             }
                         } while(true);
                     }
+                    break;
 
                 case 4 :
                     String name;

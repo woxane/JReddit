@@ -294,7 +294,7 @@ public class Reddit {
                 return false;
 
             } else {
-                int number = 0;
+                int number = 1;
                 int choose;
                 System.out.println("Please choose one of the above subreddits : ");
 
@@ -324,8 +324,12 @@ public class Reddit {
                 System.out.println("Number of users : " + subreddit.users.size());
                 System.out.println(searcherAccount.joinedSubreddits.contains(subreddit) ? "Followed" : "Follow");
 
-                System.out.println("\nWant to " + (searcherAccount.joinedSubreddits.contains(subreddit) ? "Unfollow" : "Follow") + " (y/n) : ");
-                boolean option = scanner.nextLine() == "y";
+                boolean option = false;
+
+                if (!Objects.equals(subreddit.owner , searcherAccount)) {
+                    System.out.println("\nWant to " + (searcherAccount.joinedSubreddits.contains(subreddit) ? "Unfollow" : "Follow") + " (y/n) : ");
+                    option = scanner.nextLine() == "y";
+                }
 
                 if (option) {
                     if (searcherAccount.joinedSubreddits.contains(subreddit)) {
