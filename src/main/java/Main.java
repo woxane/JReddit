@@ -91,12 +91,17 @@ public class Main {
                     break;
 
                 case 5 :
-                    Post post = Reddit.postScroller(account.posts , account);
+                    if (!account.posts.isEmpty()) {
+                        Post post = Reddit.postScroller(account.posts , account);
 
-                    if (post != null) {
-                        post.viewPost();
-                        post.explorePost(account);
+                        if (post != null) {
+                            post.viewPost();
+                            post.explorePost(account);
+                        }
                     }
+                    System.out.println("you haven't created any post </3");
+                    break;
+
                 case 6 :
                     logOut = true;
                     break;

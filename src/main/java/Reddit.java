@@ -61,11 +61,11 @@ public class Reddit {
         do {
             emailAddress = scanner.nextLine();
 
-            if (emailValidator(emailAddress)) {
-                break;
-
-            } else if (getAllEmails().contains(emailAddress)) {
+            if (getAllEmails().contains(emailAddress)) {
                 System.out.println("Sorry but the email address you entered is already in use </3 . \n\tTry something else : ");
+
+            } else if (emailValidator(emailAddress)) {
+                break;
 
             } else {
                 System.out.print("Sorry but the email address you enter is not valid </3 . \n\tTry something else: ");
