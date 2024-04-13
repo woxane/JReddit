@@ -39,7 +39,7 @@ public class Post {
         Scanner scanner = new Scanner(System.in);
         Comment comment;
 
-        System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments\n Or :\n4) Vote    5) Leave a comment     6) Quite\n: ");
+        System.out.print("Explore : \n1) This subreddit   2) Author profile    3) Comments\n Or :\n4) Vote    5) Leave a comment     6) Quit\n: ");
         int exploreOption = scanner.nextInt();
         scanner.nextLine();
 

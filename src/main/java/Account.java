@@ -46,15 +46,13 @@ public class Account {
         System.out.println("\tPosts : ");
 
         for (Post post : posts) {
-            System.out.println("\t\t" + post.title);
-            System.out.println("\t\t\t" + post.vote + "^");
+            System.out.println("\t\t" + post.title + " (vote : " + post.vote + ")");
         }
 
         System.out.println("\tComments : ");
 
         for (Comment comment : comments) {
-            System.out.println("\t\t" + comment.content);
-            System.out.println("\t\t\t" + comment.vote + "^");
+            System.out.println("\t\t" + comment.content + " (vote : " + comment.vote + ")");
         }
     }
 

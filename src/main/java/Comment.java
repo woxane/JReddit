@@ -69,7 +69,7 @@ public class Comment {
     public void exploreComment(Account account) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Explore : \n1) Author profile \n Or : \n2) Vote   3) Quite");
+        System.out.print("Explore : \n1) Author profile \n Or : \n2) Vote   3) Quit \n: ");
         int exploreOption = scanner.nextInt();
         scanner.nextLine();
 

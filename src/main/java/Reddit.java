@@ -311,7 +311,7 @@ public class Reddit {
                     choose = scanner.nextInt();
                     scanner.nextLine();
 
-                    if (choose > 0 | choose <= similarSubreddits.size()){
+                    if (choose > 0 & choose <= similarSubreddits.size()){
                         break;
 
                     } else {
