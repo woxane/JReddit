@@ -13,17 +13,17 @@ public class Admin extends Account{
 
 
     public void adminAction() {
-        boolean page = true;
+        String page;
         boolean option;
         Scanner scanner = new Scanner(System.in);
 
 
-        while (page) {
-            System.out.println("Hey , you entered Add / Remove section .\nwant to continue ? (y/n)");
-            page = scanner.nextLine() == "y";
+        while (true) {
+            System.out.print("Hey , you entered Add / Remove section .\nwant to continue ? (y/n) : ");
+            page = scanner.nextLine();
 
-            if (!page) {
-                continue;
+            if (page == "n") {
+                return;
             }
 
             System.out.print("Please enter the username of this user : u/");
