@@ -356,6 +356,7 @@ public class Reddit {
                     admin.adminAction();
                 }
 
+                System.out.println("Choose one of the above post for interaction : ");
 
                 if (subreddit.posts.size() != 0) {
                     Post post = postScroller(subreddit.posts , searcherAccount);

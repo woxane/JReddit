@@ -22,8 +22,8 @@ public class Admin extends Account{
             System.out.print("Hey , you entered Add / Remove section .\nwant to continue ? (y/n) : ");
             page = scanner.nextLine();
 
-            if (page == "n") {
-                return;
+            if (page.equals("n")) {
+                break;
             }
 
             System.out.print("Please enter the username of this user : u/");
@@ -107,7 +107,7 @@ public class Admin extends Account{
     public void postInteraction(Post post) {
         int option;
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Hey Admin , Choose : \n1) Delete this post \n2) Ban the author and delete all the post of his");
+        System.out.print("Hey Admin , Choose : \n1) Delete this post \n2) Ban the author and delete all the post of his \n: ");
 
         do {
             option = scanner.nextInt();
@@ -125,6 +125,7 @@ public class Admin extends Account{
             case 1:
                 if (this.accountID == post.subreddit.owner.accountID) {
                     subreddit.posts.remove(post);
+                    System.out.println("Done ! , Post deleted </3");
                     break;
                 }
 
@@ -139,6 +140,7 @@ public class Admin extends Account{
             case 2:
                 if (this.accountID == post.subreddit.owner.accountID) {
                     if (subreddit.adminCheck(post.author) != null) {
+                        System.out.println("That was post of admin and get the admin permission from him </3");
                         subreddit.admins.remove(subreddit.adminCheck(post.author));
                     }
                 }
@@ -150,6 +152,7 @@ public class Admin extends Account{
                 }
 
                 subreddit.banedUsers.add(post.author);
+                System.out.println("All post of him now deleted </3");
                 int numberOfPosts = 0;
 
                 for (Post subredditPost : subreddit.posts) {
