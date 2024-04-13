@@ -64,4 +64,29 @@ public class Comment {
         }
         return;
     }
+
+
+    public void exploreComment(Account account) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Explore : \n1) Author profile \n Or : \n2) Vote   3) Quite");
+        int exploreOption = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (exploreOption) {
+            case 1 :
+                this.author.viewProfile();
+                break;
+
+            case 2 :
+                this.voteComment(account);
+                break;
+
+
+            default :
+                break;
+        }
+
+
+    }
 }
