@@ -107,6 +107,10 @@ public class Main {
                     break;
 
                 case 6 :
+                    account.viewProfile();
+                    break;
+
+                case 7 :
                     logOut = true;
                     break;
             }
@@ -193,12 +197,12 @@ public class Main {
         int option;
 
         System.out.println("where you want to go ? : ");
-        System.out.print("1) Timeline\n2) Create subreddit\n3) Create post \n4) Search\n5) Show my posts\n6) Log out\n: ");
+        System.out.print("1) Timeline\n2) Create subreddit\n3) Create post \n4) Search\n5) Show my posts\n6) Show my profile \n7) Log out\n: ");
 
         do {
             option = scanner.nextInt();
 
-            if (option > 0 & option < 7) {
+            if (option > 0 & option < 8) {
                 break;
             } else {
                 System.out.print("Please choose between 1 , 5 : ");

@@ -333,6 +333,11 @@ public class Reddit {
 
                 if (option) {
                     if (searcherAccount.joinedSubreddits.contains(subreddit)) {
+                        if (subreddit.adminCheck(searcherAccount) != null) {
+
+
+                        }
+
                         searcherAccount.joinedSubreddits.remove(subreddit);
                         subreddit.users.remove(searcherAccount);
 
