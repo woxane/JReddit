@@ -62,13 +62,13 @@ public class Reddit {
             emailAddress = scanner.nextLine();
 
             if (getAllEmails().contains(emailAddress)) {
-                System.out.println("Sorry but the email address you entered is already in use </3 . \n\tTry something else : ");
+                System.out.println("Sorry but the email address you entered is already in use </3 . \nTry something else : ");
 
             } else if (emailValidator(emailAddress)) {
                 break;
 
             } else {
-                System.out.print("Sorry but the email address you enter is not valid </3 . \n\tTry something else: ");
+                System.out.print("Sorry but the email address you enter is not valid </3 . \nTry something else: ");
             }
 
         } while (true);
@@ -79,7 +79,7 @@ public class Reddit {
            username = scanner.nextLine();
 
            if (getAllUsernames().contains(username)) {
-               System.out.print("Sorry but the username you enter is already in use </3 . \n\tTry something else : ");
+               System.out.print("Sorry but the username you enter is already in use </3 . \nTry something else : ");
            } else {
                break;
            }
@@ -89,7 +89,7 @@ public class Reddit {
         System.out.print("Oh it's going well , please enter your password : ");
         password = scanner.nextLine();
 
-        System.out.print("Just one more step .\n\tEnter your name : ");
+        System.out.print("Just one more step .\nEnter your name : ");
         name = scanner.nextLine();
 
         Account account = new Account(name , username , password , emailAddress);
@@ -104,7 +104,7 @@ public class Reddit {
         int loginMethod;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("You want to log in with username or email address ? \n\t1) Username \t2) Email\n: ");
+        System.out.print("You want to log in with username or email address ? \n1) Username \t2) Email\n: ");
 
         do {
             loginMethod = scanner.nextInt();

@@ -117,7 +117,7 @@ public class Main {
         int authMethod;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Hey welcome to JReddit , to continue choose one of the above options : \n\t1) Log in\t\t2) Sign up\n : ");
+        System.out.print("Hey welcome to JReddit , to continue choose one of the above options : \n\t1) Log in\t\t2) Sign up\n: ");
 
         do {
             authMethod = scanner.nextInt();
@@ -168,7 +168,7 @@ public class Main {
         }
 
         if (posts.isEmpty()) {
-            System.out.println("This subreddit has no post </3");
+            System.out.println("There is no post for now </3\nJoin more subreddit to have more post in timeline .");
             return;
         }
 
@@ -189,7 +189,7 @@ public class Main {
         int option;
 
         System.out.println("where you want to go ? : ");
-        System.out.print("1) Timeline\t2)Create subreddit\n3)Create post \n4) Search\n5)Show my posts\n6) Log out\n: ");
+        System.out.print("1) Timeline\n2) Create subreddit\n3) Create post \n4) Search\n5) Show my posts\n6) Log out\n: ");
 
         do {
             option = scanner.nextInt();
