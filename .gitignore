@@ -2,3 +2,7 @@
 /shelf/
 /workspace.xml
 .idea/
+TODO.txt
+build/*
+.gradle/*
+
